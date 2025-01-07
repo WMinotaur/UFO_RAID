@@ -1,29 +1,14 @@
-#ifndef BACKGROUND_H
-#define BACKGROUND_H
+#pragma once
+#include <SFML/Graphics.hpp>
+#include "GameElement.h"
+using namespace sf;
+class Background :public GameElement
+{
+private:
+	std::string path{ ".\\Textures\\background.jpg" };
 
-#include "constants.h"
-#include "entity.h"
+public:
+	Background();
 
-// Class to represent the background
-// Inherits from entity
-class background : public entity {
-  // Private data members
-  static sf::Texture texture;
-
- public:
-  // Interface of the class
-
-  // Constructor
-  // Arguments are the initial coordinates of the centre of the background
-  // SFML uses the computer graphics convention
-  // (0, 0) is the top left corner of the screen
-  // x increases to the right
-  // y increases downwards
-  background(float x, float y);
-
-  // Implement the pure virtual functions
-  void update() override;
-  void draw(sf::RenderWindow& window) override;
 };
 
-#endif // BACKGROUND_H
