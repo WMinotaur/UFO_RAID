@@ -6,6 +6,7 @@
 
 class interactions
 {
+public:
 	bool is_interacting(GameElement& element1, GameElement& element2);
 	void clash(Ship& ship, Missile& missile);
 };
