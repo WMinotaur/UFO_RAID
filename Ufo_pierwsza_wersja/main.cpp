@@ -10,7 +10,7 @@
 #include "Background.h"
 #include "Ship.h"
 #include "Missile.h"
-#include <iostream>
+#include "interactions.h"
 
 using namespace sf;
 
@@ -60,12 +60,15 @@ int main() {
         Message_box box("nie udalo sie zaladowac statku", "blad");
         return -1;
     }
-    Missile missile(900.0f, 0);
+    Missile *missile[4];
+    missile[0] = new Missile(0.0f,0.0f);
+
 
     if (ship.if_initialised() == false) {
         Message_box box("nie udalo sie zaladowac statku", "blad");
         return -1;
     }
+    interactions game_interactions;
 
     //-------------------------------------------------------------------------------
     while (okno.isOpen()) {
@@ -89,7 +92,8 @@ int main() {
             ship.move(5.f, 0.f); // Przesuwanie w prawo
         }
         //update
-        missile.update();
+        missile[0]->update();
+        game_interactions.clash(ship, *missile[0]);
 
         // Rysowanie
         okno.clear();
@@ -97,9 +101,9 @@ int main() {
         okno.draw(plansza);
         ship.draw(&okno);
    
-        missile.draw(&okno);
+        missile[0]->draw(&okno);
         okno.display();
     }
-
+    delete missile[0];
     return 0;
 }

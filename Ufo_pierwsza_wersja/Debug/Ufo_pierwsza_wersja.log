@@ -1,1 +1,11 @@
-﻿
+﻿  interactions.cpp
+  main.cpp
+C:\git\jpo_ufo_gra\Ufo_pierwsza_wersja\main.cpp(96,27): error C2248: 'interactions::clash': cannot access private member declared in class 'interactions'
+      C:\git\jpo_ufo_gra\Ufo_pierwsza_wersja\interactions.h(10,7):
+      see declaration of 'interactions::clash'
+      C:\git\jpo_ufo_gra\Ufo_pierwsza_wersja\interactions.h(7,7):
+      see declaration of 'interactions'
+  
+  Missile.cpp
+  Ship.cpp
+  Generating Code...

@@ -5,6 +5,46 @@
     {
       "AbsoluteMoniker": "D:0:0:{A78B1A66-B6B6-4B0E-880F-808B75F02F6D}|Ufo_pierwsza_wersja\\Ufo_pierwsza_wersja.vcxproj|C:\\git\\jpo_ufo_gra\\Ufo_pierwsza_wersja\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{A78B1A66-B6B6-4B0E-880F-808B75F02F6D}|Ufo_pierwsza_wersja\\Ufo_pierwsza_wersja.vcxproj|solutionrelative:Ufo_pierwsza_wersja\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A78B1A66-B6B6-4B0E-880F-808B75F02F6D}|Ufo_pierwsza_wersja\\Ufo_pierwsza_wersja.vcxproj|C:\\git\\jpo_ufo_gra\\Ufo_pierwsza_wersja\\interactions.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A78B1A66-B6B6-4B0E-880F-808B75F02F6D}|Ufo_pierwsza_wersja\\Ufo_pierwsza_wersja.vcxproj|solutionrelative:Ufo_pierwsza_wersja\\interactions.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A78B1A66-B6B6-4B0E-880F-808B75F02F6D}|Ufo_pierwsza_wersja\\Ufo_pierwsza_wersja.vcxproj|C:\\git\\jpo_ufo_gra\\Ufo_pierwsza_wersja\\interactions.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A78B1A66-B6B6-4B0E-880F-808B75F02F6D}|Ufo_pierwsza_wersja\\Ufo_pierwsza_wersja.vcxproj|solutionrelative:Ufo_pierwsza_wersja\\interactions.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A78B1A66-B6B6-4B0E-880F-808B75F02F6D}|Ufo_pierwsza_wersja\\Ufo_pierwsza_wersja.vcxproj|C:\\git\\jpo_ufo_gra\\Ufo_pierwsza_wersja\\GameElement.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A78B1A66-B6B6-4B0E-880F-808B75F02F6D}|Ufo_pierwsza_wersja\\Ufo_pierwsza_wersja.vcxproj|solutionrelative:Ufo_pierwsza_wersja\\GameElement.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A78B1A66-B6B6-4B0E-880F-808B75F02F6D}|Ufo_pierwsza_wersja\\Ufo_pierwsza_wersja.vcxproj|C:\\git\\jpo_ufo_gra\\Ufo_pierwsza_wersja\\GameElement.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A78B1A66-B6B6-4B0E-880F-808B75F02F6D}|Ufo_pierwsza_wersja\\Ufo_pierwsza_wersja.vcxproj|solutionrelative:Ufo_pierwsza_wersja\\GameElement.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A78B1A66-B6B6-4B0E-880F-808B75F02F6D}|Ufo_pierwsza_wersja\\Ufo_pierwsza_wersja.vcxproj|C:\\git\\jpo_ufo_gra\\Ufo_pierwsza_wersja\\Missile.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A78B1A66-B6B6-4B0E-880F-808B75F02F6D}|Ufo_pierwsza_wersja\\Ufo_pierwsza_wersja.vcxproj|solutionrelative:Ufo_pierwsza_wersja\\Missile.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A78B1A66-B6B6-4B0E-880F-808B75F02F6D}|Ufo_pierwsza_wersja\\Ufo_pierwsza_wersja.vcxproj|C:\\git\\jpo_ufo_gra\\Ufo_pierwsza_wersja\\Ship.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A78B1A66-B6B6-4B0E-880F-808B75F02F6D}|Ufo_pierwsza_wersja\\Ufo_pierwsza_wersja.vcxproj|solutionrelative:Ufo_pierwsza_wersja\\Ship.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A78B1A66-B6B6-4B0E-880F-808B75F02F6D}|Ufo_pierwsza_wersja\\Ufo_pierwsza_wersja.vcxproj|C:\\git\\jpo_ufo_gra\\Ufo_pierwsza_wersja\\background.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A78B1A66-B6B6-4B0E-880F-808B75F02F6D}|Ufo_pierwsza_wersja\\Ufo_pierwsza_wersja.vcxproj|solutionrelative:Ufo_pierwsza_wersja\\background.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A78B1A66-B6B6-4B0E-880F-808B75F02F6D}|Ufo_pierwsza_wersja\\Ufo_pierwsza_wersja.vcxproj|C:\\git\\jpo_ufo_gra\\Ufo_pierwsza_wersja\\background.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A78B1A66-B6B6-4B0E-880F-808B75F02F6D}|Ufo_pierwsza_wersja\\Ufo_pierwsza_wersja.vcxproj|solutionrelative:Ufo_pierwsza_wersja\\background.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A78B1A66-B6B6-4B0E-880F-808B75F02F6D}|Ufo_pierwsza_wersja\\Ufo_pierwsza_wersja.vcxproj|C:\\git\\jpo_ufo_gra\\Ufo_pierwsza_wersja\\Missile.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A78B1A66-B6B6-4B0E-880F-808B75F02F6D}|Ufo_pierwsza_wersja\\Ufo_pierwsza_wersja.vcxproj|solutionrelative:Ufo_pierwsza_wersja\\Missile.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A78B1A66-B6B6-4B0E-880F-808B75F02F6D}|Ufo_pierwsza_wersja\\Ufo_pierwsza_wersja.vcxproj|C:\\git\\jpo_ufo_gra\\Ufo_pierwsza_wersja\\Ship.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A78B1A66-B6B6-4B0E-880F-808B75F02F6D}|Ufo_pierwsza_wersja\\Ufo_pierwsza_wersja.vcxproj|solutionrelative:Ufo_pierwsza_wersja\\Ship.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,8 +54,34 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "interactions.cpp",
+              "DocumentMoniker": "C:\\git\\jpo_ufo_gra\\Ufo_pierwsza_wersja\\interactions.cpp",
+              "RelativeDocumentMoniker": "Ufo_pierwsza_wersja\\interactions.cpp",
+              "ToolTip": "C:\\git\\jpo_ufo_gra\\Ufo_pierwsza_wersja\\interactions.cpp*",
+              "RelativeToolTip": "Ufo_pierwsza_wersja\\interactions.cpp*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-01-08T22:41:03.653Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "interactions.h",
+              "DocumentMoniker": "C:\\git\\jpo_ufo_gra\\Ufo_pierwsza_wersja\\interactions.h",
+              "RelativeDocumentMoniker": "Ufo_pierwsza_wersja\\interactions.h",
+              "ToolTip": "C:\\git\\jpo_ufo_gra\\Ufo_pierwsza_wersja\\interactions.h",
+              "RelativeToolTip": "Ufo_pierwsza_wersja\\interactions.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-01-08T22:01:11.651Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -24,9 +90,107 @@
               "RelativeDocumentMoniker": "Ufo_pierwsza_wersja\\main.cpp",
               "ToolTip": "C:\\git\\jpo_ufo_gra\\Ufo_pierwsza_wersja\\main.cpp",
               "RelativeToolTip": "Ufo_pierwsza_wersja\\main.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAF8AAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-01-05T22:38:16.568Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Ship.cpp",
+              "DocumentMoniker": "C:\\git\\jpo_ufo_gra\\Ufo_pierwsza_wersja\\Ship.cpp",
+              "RelativeDocumentMoniker": "Ufo_pierwsza_wersja\\Ship.cpp",
+              "ToolTip": "C:\\git\\jpo_ufo_gra\\Ufo_pierwsza_wersja\\Ship.cpp",
+              "RelativeToolTip": "Ufo_pierwsza_wersja\\Ship.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-01-06T23:08:33.975Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Missile.h",
+              "DocumentMoniker": "C:\\git\\jpo_ufo_gra\\Ufo_pierwsza_wersja\\Missile.h",
+              "RelativeDocumentMoniker": "Ufo_pierwsza_wersja\\Missile.h",
+              "ToolTip": "C:\\git\\jpo_ufo_gra\\Ufo_pierwsza_wersja\\Missile.h",
+              "RelativeToolTip": "Ufo_pierwsza_wersja\\Missile.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-01-07T13:00:10.302Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Missile.cpp",
+              "DocumentMoniker": "C:\\git\\jpo_ufo_gra\\Ufo_pierwsza_wersja\\Missile.cpp",
+              "RelativeDocumentMoniker": "Ufo_pierwsza_wersja\\Missile.cpp",
+              "ToolTip": "C:\\git\\jpo_ufo_gra\\Ufo_pierwsza_wersja\\Missile.cpp",
+              "RelativeToolTip": "Ufo_pierwsza_wersja\\Missile.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-01-07T13:17:18.212Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Ship.h",
+              "DocumentMoniker": "C:\\git\\jpo_ufo_gra\\Ufo_pierwsza_wersja\\Ship.h",
+              "RelativeDocumentMoniker": "Ufo_pierwsza_wersja\\Ship.h",
+              "ToolTip": "C:\\git\\jpo_ufo_gra\\Ufo_pierwsza_wersja\\Ship.h",
+              "RelativeToolTip": "Ufo_pierwsza_wersja\\Ship.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-01-06T23:06:38.288Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Background.cpp",
+              "DocumentMoniker": "C:\\git\\jpo_ufo_gra\\Ufo_pierwsza_wersja\\Background.cpp",
+              "RelativeDocumentMoniker": "Ufo_pierwsza_wersja\\Background.cpp",
+              "ToolTip": "C:\\git\\jpo_ufo_gra\\Ufo_pierwsza_wersja\\Background.cpp",
+              "RelativeToolTip": "Ufo_pierwsza_wersja\\Background.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-01-06T22:42:07.617Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Background.h",
+              "DocumentMoniker": "C:\\git\\jpo_ufo_gra\\Ufo_pierwsza_wersja\\Background.h",
+              "RelativeDocumentMoniker": "Ufo_pierwsza_wersja\\Background.h",
+              "ToolTip": "C:\\git\\jpo_ufo_gra\\Ufo_pierwsza_wersja\\Background.h",
+              "RelativeToolTip": "Ufo_pierwsza_wersja\\Background.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-01-06T22:40:17.09Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "GameElement.cpp",
+              "DocumentMoniker": "C:\\git\\jpo_ufo_gra\\Ufo_pierwsza_wersja\\GameElement.cpp",
+              "RelativeDocumentMoniker": "Ufo_pierwsza_wersja\\GameElement.cpp",
+              "ToolTip": "C:\\git\\jpo_ufo_gra\\Ufo_pierwsza_wersja\\GameElement.cpp",
+              "RelativeToolTip": "Ufo_pierwsza_wersja\\GameElement.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-01-06T21:55:54.686Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "GameElement.h",
+              "DocumentMoniker": "C:\\git\\jpo_ufo_gra\\Ufo_pierwsza_wersja\\GameElement.h",
+              "RelativeDocumentMoniker": "Ufo_pierwsza_wersja\\GameElement.h",
+              "ToolTip": "C:\\git\\jpo_ufo_gra\\Ufo_pierwsza_wersja\\GameElement.h",
+              "RelativeToolTip": "Ufo_pierwsza_wersja\\GameElement.h",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABIAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-01-06T21:54:50.58Z",
               "EditorCaption": ""
             }
           ]
