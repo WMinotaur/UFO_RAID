@@ -135,6 +135,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Background.cpp" />
+    <ClCompile Include="EndScreen.cpp" />
     <ClCompile Include="GameElement.cpp" />
     <ClCompile Include="interactions.cpp" />
     <ClCompile Include="main.cpp" />
@@ -143,6 +144,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Background.h" />
+    <ClInclude Include="EndScreen.h" />
     <ClInclude Include="GameElement.h" />
     <ClInclude Include="interactions.h" />
     <ClInclude Include="Missile.h" />

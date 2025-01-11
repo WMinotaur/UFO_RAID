@@ -8,10 +8,13 @@ class Ship:public GameElement
 {
 private:
     std::string path{ ".\\Textures\\ufo.png" };
-    float pozycja_x{};
-    float pozycja_y{};
+    bool isDetonated{ false };
+    std::string broken_ufo{ ".\\Textures\\broken_ufo3.jpg" };
 public:
     Ship();
     void move(float offsetX, float offsetY);
+    void detonate();
+    void draw(RenderWindow* okno);
+    bool isShipDetonated();
 };
 

@@ -1,3 +1,4 @@
+#include <vector>
 #include <SFML/Graphics.hpp>
 #include <string>
 #include <math.h>
@@ -10,13 +11,13 @@
 #include "Background.h"
 #include "Ship.h"
 #include "Missile.h"
-#include "interactions.h"
+#include <windows.h>
+//#include "interactions.h"
 
 using namespace sf;
-
-
-
-
+//DOTO list
+// nie wychodzenie poza plansze
+//S
 
 
 class Message_box {
@@ -60,15 +61,17 @@ int main() {
         Message_box box("nie udalo sie zaladowac statku", "blad");
         return -1;
     }
-    Missile *missile[4];
-    missile[0] = new Missile(0.0f,0.0f);
+    std::vector<Missile*> missiles;
+    
 
 
     if (ship.if_initialised() == false) {
         Message_box box("nie udalo sie zaladowac statku", "blad");
         return -1;
     }
-    interactions game_interactions;
+    //interactions game_interactions;
+    DWORD start_time{ GetTickCount() };
+    DWORD CurrentTime{ GetTickCount() };
 
     //-------------------------------------------------------------------------------
     while (okno.isOpen()) {
@@ -81,8 +84,14 @@ int main() {
         if (Keyboard::isKeyPressed(Keyboard::Escape)) {
             okno.close();
         }
-
-
+        if (GetTickCount() - CurrentTime > constants::MISSILE_GENERATION_PERIOD && ship.isShipDetonated()==false)
+        {
+            GameElementPosition* ShipPosition = ship.getPosition();
+            Missile* newMissile = new Missile(ShipPosition->x,0);
+            missiles.push_back(newMissile);
+            CurrentTime = GetTickCount();
+        }
+        
 
         // Obs³uga klawiatury: ruch statku
         if (Keyboard::isKeyPressed(Keyboard::Left)) {
@@ -92,18 +101,41 @@ int main() {
             ship.move(5.f, 0.f); // Przesuwanie w prawo
         }
         //update
-        missile[0]->update();
-        game_interactions.clash(ship, *missile[0]);
+        for (Missile* m : missiles) {
+            m->update();
+            m->detectColision(&ship);
+        }
+        if (ship.isShipDetonated()) {
+            
+            for (Missile* m : missiles) {
+                delete m;
+            }
+            missiles.erase(missiles.begin(), missiles.end());
+            background.ShowEndGameScreen();
+        }
+
+       // game_interactions.clash(ship, *missile[0]);
 
         // Rysowanie
         okno.clear();
         background.draw(&okno);
-        okno.draw(plansza);
+        if (ship.isShipDetonated() == false) { okno.draw(plansza); }
         ship.draw(&okno);
-   
-        missile[0]->draw(&okno);
+        for (int i{}; i < missiles.size(); i++) {
+            Missile* m = missiles[i];
+            if (m != NULL) {
+                if (m->toBeDeleted()) {
+                    missiles.erase(missiles.begin()+i);
+                    delete m;
+                    break;
+                }
+                m->draw(&okno);
+                
+            }
+            
+        }
         okno.display();
     }
-    delete missile[0];
+    
     return 0;
 }

@@ -22,3 +22,7 @@ void GameElement::Create(std::string image_path) {
         sprite.setTexture(texture);
     }
 }
+
+GameElementPosition* GameElement::getPosition() {
+    return &position;
+}
