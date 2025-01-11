@@ -3,5 +3,10 @@
 
 Background::Background():GameElement(){
     Create(path);
+
+}
+
+void Background::ShowEndGameScreen() {
+    Create(gameover);
 }
 
