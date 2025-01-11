@@ -16,7 +16,7 @@
 
 using namespace sf;
 //DOTO list
-// nie wychodzenie poza plansze
+// full screen
 //S
 
 
@@ -40,11 +40,11 @@ int main() {
     RenderWindow okno({ constants::window_width, constants::window_height }, "gra_ufo");
     okno.setFramerateLimit(60);
 
-    sf::Vector2f wymiary{ 1000,constants::window_height };
+    /*sf::Vector2f wymiary{ 1000,constants::window_height };
     RectangleShape plansza(wymiary);
-    plansza.setFillColor(sf::Color(212, 106, 48));
-    float x_position = (constants::window_width - wymiary.x) / 2;
-    plansza.setPosition(x_position, 0.f);
+    plansza.setFillColor(sf::Color(212, 106, 48));*/
+    //float x_position = (constants::window_width - wymiary.x) / 2;
+    //plansza.setPosition(x_position, 0.f);
 
 
 
@@ -73,6 +73,9 @@ int main() {
     DWORD start_time{ GetTickCount() };
     DWORD CurrentTime{ GetTickCount() };
 
+
+
+    
     //-------------------------------------------------------------------------------
     while (okno.isOpen()) {
         Event event;
@@ -96,9 +99,15 @@ int main() {
         // Obs³uga klawiatury: ruch statku
         if (Keyboard::isKeyPressed(Keyboard::Left)) {
             ship.move(-5.f, 0.f); // Przesuwanie w lewo
+            if (ship.isOnTheRoad(background.getImage()) == false) {
+                ship.detonate();
+            }
         }
         if (Keyboard::isKeyPressed(Keyboard::Right)) {
             ship.move(5.f, 0.f); // Przesuwanie w prawo
+            if (ship.isOnTheRoad(background.getImage()) == false) {
+                ship.detonate();
+            }
         }
         //update
         for (Missile* m : missiles) {
@@ -119,7 +128,7 @@ int main() {
         // Rysowanie
         okno.clear();
         background.draw(&okno);
-        if (ship.isShipDetonated() == false) { okno.draw(plansza); }
+        //if (ship.isShipDetonated() == false) { okno.draw(plansza); }
         ship.draw(&okno);
         for (int i{}; i < missiles.size(); i++) {
             Missile* m = missiles[i];

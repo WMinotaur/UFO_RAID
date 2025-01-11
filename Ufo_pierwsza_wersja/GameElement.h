@@ -17,6 +17,7 @@ protected:
     Sprite sprite;
     bool is_initialised{ false };
     GameElementPosition position;
+    Image image;
 
 public:
     GameElement();

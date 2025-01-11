@@ -10,3 +10,7 @@ void Background::ShowEndGameScreen() {
     Create(gameover);
 }
 
+Image* Background::getImage() {
+    return &image;
+}
+

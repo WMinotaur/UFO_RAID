@@ -9,7 +9,7 @@ bool interactions::is_interacting(GameElement& element1, GameElement& element2) 
 
 void interactions::clash(Ship& ship, Missile& missile) {
     if (is_interacting(ship, missile)) {
-        std::cout << "Kolizja wykryta pomiêdzy statkiem a pociskiem!" << std::endl;
+        std::cout << "uderzene!!<-------------------" << std::endl;
 
     }
 }

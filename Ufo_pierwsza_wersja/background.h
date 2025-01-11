@@ -11,6 +11,7 @@ private:
 public:
 	Background();
 	void ShowEndGameScreen();
+	Image* getImage();
 
 };
 

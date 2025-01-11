@@ -21,6 +21,7 @@ void GameElement::Create(std::string image_path) {
     if (is_initialised == true) {
         sprite.setTexture(texture);
     }
+    this->image = texture.copyToImage();
 }
 
 GameElementPosition* GameElement::getPosition() {

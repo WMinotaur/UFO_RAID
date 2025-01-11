@@ -39,3 +39,17 @@ bool Ship::isShipDetonated() {
     return isDetonated;
 }
 
+bool Ship::isOnTheRoad(Image* image) {
+    Color color = image->getPixel(position.x, position.y);
+    Color color2 = image->getPixel(position.x + sprite.getGlobalBounds().width, position.y);
+    Color allowedColor = Color(212, 106, 48);
+    if (color == allowedColor && color2 == allowedColor )
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
