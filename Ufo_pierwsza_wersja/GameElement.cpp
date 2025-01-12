@@ -27,3 +27,7 @@ void GameElement::Create(std::string image_path) {
 GameElementPosition* GameElement::getPosition() {
     return &position;
 }
+
+moving_GameElement::moving_GameElement() {
+
+};

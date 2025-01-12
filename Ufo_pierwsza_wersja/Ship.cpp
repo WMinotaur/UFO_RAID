@@ -26,7 +26,7 @@ void Ship::move(float offsetX, float offsetY) {
 
 }
 void Ship::detonate() {
-    this->isDetonated = true;
+      this->isDetonated = true;
 }
 
 void Ship::draw(RenderWindow* okno) {
@@ -39,9 +39,19 @@ bool Ship::isShipDetonated() {
     return isDetonated;
 }
 
-bool Ship::isOnTheRoad(Image* image) {
-    Color color = image->getPixel(position.x, position.y);
-    Color color2 = image->getPixel(position.x + sprite.getGlobalBounds().width, position.y);
+bool Ship::isOnTheRoad(Image* image,int background_position, int background_height) {
+    Vector2u imgSize = image->getSize();
+    if (imgSize.y < background_height - constants::window_height - background_position + position.y)
+        return false;
+    if (imgSize.x < position.x)
+        return false;
+    int relative_y = background_height - constants::window_height - background_position + position.y;
+    if (relative_y < 0)
+    {
+        return false;
+    }
+    Color color = image->getPixel(position.x, relative_y); //Left site of the ship
+    Color color2 = image->getPixel(position.x + sprite.getGlobalBounds().width, relative_y); // Right side of the ship
     Color allowedColor = Color(212, 106, 48);
     if (color == allowedColor && color2 == allowedColor )
     {
@@ -51,5 +61,6 @@ bool Ship::isOnTheRoad(Image* image) {
     {
         return false;
     }
+
 }
 

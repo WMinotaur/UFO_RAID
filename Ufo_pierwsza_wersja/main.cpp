@@ -17,7 +17,11 @@
 using namespace sf;
 //DOTO list
 // full screen
-//S
+// pociski z samolotu
+// fuel
+// przyspieszenie
+// endScreen Player victory
+// starting screen 
 
 
 class Message_box {
@@ -87,25 +91,25 @@ int main() {
         if (Keyboard::isKeyPressed(Keyboard::Escape)) {
             okno.close();
         }
-        if (GetTickCount() - CurrentTime > constants::MISSILE_GENERATION_PERIOD && ship.isShipDetonated()==false)
+        if (GetTickCount64() - CurrentTime > constants::MISSILE_GENERATION_PERIOD && ship.isShipDetonated()==false)
         {
             GameElementPosition* ShipPosition = ship.getPosition();
             Missile* newMissile = new Missile(ShipPosition->x,0);
             missiles.push_back(newMissile);
-            CurrentTime = GetTickCount();
+            CurrentTime = GetTickCount64();
         }
         
 
         // Obs³uga klawiatury: ruch statku
         if (Keyboard::isKeyPressed(Keyboard::Left)) {
             ship.move(-5.f, 0.f); // Przesuwanie w lewo
-            if (ship.isOnTheRoad(background.getImage()) == false) {
+            if (ship.isOnTheRoad(background.getImage(), background.getDistanceTraveled(), background.getBackgroundHeight() ) == false) {
                 ship.detonate();
             }
         }
         if (Keyboard::isKeyPressed(Keyboard::Right)) {
             ship.move(5.f, 0.f); // Przesuwanie w prawo
-            if (ship.isOnTheRoad(background.getImage()) == false) {
+            if (ship.isOnTheRoad(background.getImage(), background.getDistanceTraveled(), background.getBackgroundHeight()) == false) {
                 ship.detonate();
             }
         }
@@ -122,6 +126,7 @@ int main() {
             missiles.erase(missiles.begin(), missiles.end());
             background.ShowEndGameScreen();
         }
+        background.update();
 
        // game_interactions.clash(ship, *missile[0]);
 

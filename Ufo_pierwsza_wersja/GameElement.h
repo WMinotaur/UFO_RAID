@@ -35,5 +35,6 @@ class moving_GameElement : public GameElement {
 protected:
     sf::Vector2f velocity{ 0.f,0.f };
 public:
+    moving_GameElement();
 };
 
