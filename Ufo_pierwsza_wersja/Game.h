@@ -20,6 +20,7 @@
 enum GameOptions {
 	Level1 = 1,
 	Level2,
+	NextLevel,
 	CreditsGame,
 	ExitGame,
 	Title,
@@ -28,11 +29,19 @@ enum GameOptions {
 };
 class Game
 {
+private:
+	std::vector<Missile*> missiles;
+	std::vector<FriendlyMissile*> friendlyMissile;
+	bool GameInitialized(Background* bkg, Ship* shp);
+	bool paused;
+	GameOptions GameLoop(RenderWindow* window, Background* bgr, Ship *ship );
+	void DeleteMissless(RenderWindow* window);
+	void UpdateMissles(Ship* ship);
 public:
 	Game();
 	GameOptions PlayLevel1(RenderWindow* okno);
 	GameOptions PlayLevel2(RenderWindow* okno);
 	GameOptions TitleScreen(RenderWindow* okno);
-	void Credits();
+	GameOptions Credits(RenderWindow* okno);
 };
 

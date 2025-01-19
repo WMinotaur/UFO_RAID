@@ -13,50 +13,38 @@ public:
 };
 
 Game::Game() {
+    paused = false;
 };
 
-GameOptions Game::PlayLevel1(RenderWindow* okno) {
-    std::string path{ ".\\Textures\\background.jpg" };
-    Background background(path);
-    if (background.if_initialised() == false)
+bool Game::GameInitialized(Background *bkg, Ship *shp)
+{
+    if (bkg->if_initialised() == false)
     {
         Message_box box("nie udalo sie zaladowac tla", "blad");
-        return InitialisationError;
+        return false;
     }
 
-    Ship ship;
-    if (ship.if_initialised() == false) {
+    if (shp->if_initialised() == false) {
         Message_box box("nie udalo sie zaladowac statku", "blad");
-        return InitialisationError;
-    }
-    std::vector<Missile*> missiles;
-    std::vector<FriendlyMissile*> friendlyMissile;
-
-
-
-    if (ship.if_initialised() == false) {
-        Message_box box("nie udalo sie zaladowac statku", "blad");
-        return InitialisationError;
+        return false;
     }
 
-    GameOptions return_value{Title};
-
+}
+GameOptions Game::GameLoop(RenderWindow* window, Background* bgr, Ship *ship)
+{
+    GameOptions return_value{ Title };
     //interactions game_interactions;
     DWORD start_time{ GetTickCount() };
     DWORD CurrentTime{ GetTickCount() };
 
-
-
-    bool paused = false;
-    //-------------------------------------------------------------------------------
-    while (okno->isOpen()) {
+    while (window->isOpen()) {
         Event event;
-        while (okno->pollEvent(event)) {
+        while (window->pollEvent(event)) {
             if (event.type == Event::Closed) {
-                okno->close();
+                window->close();
             }
             if (event.type == Event::KeyReleased) {
-                
+
                 if (event.key.code == Keyboard::P) {
                     paused = !paused;
                 }
@@ -67,18 +55,18 @@ GameOptions Game::PlayLevel1(RenderWindow* okno) {
             break;
         }
         if (Keyboard::isKeyPressed(Keyboard::Space)) {
-            
-            if (return_value != Title) {
-                break;
+
+            if (return_value != Title) { 
+                 break;
             }
-    
+
         }
         if (paused) {
             continue;
         }
-        if (GetTickCount64() - CurrentTime > constants::MISSILE_GENERATION_PERIOD && ship.isShipDetonated() == false && ship.isShipFinished() == false)
+        if (GetTickCount64() - CurrentTime > constants::MISSILE_GENERATION_PERIOD && ship->isShipDetonated() == false && ship->isShipFinished() == false)
         {
-            GameElementPosition* ShipPosition = ship.getPosition();
+            GameElementPosition* ShipPosition = ship->getPosition();
             Missile* newMissile = new Missile(ShipPosition->x, 0);
             missiles.push_back(newMissile);
             CurrentTime = GetTickCount64();
@@ -86,263 +74,148 @@ GameOptions Game::PlayLevel1(RenderWindow* okno) {
 
 
         // Obs³uga klawiatury: ruch statku
-        if (ship.isShipDetonated() == false && ship.isShipFinished() == false) {
+        if (ship->isShipDetonated() == false && ship->isShipFinished() == false) {
             if (Keyboard::isKeyPressed(Keyboard::Left)) {
-                ship.move(-5.f, 0.f); // Przesuwanie w lewo
-                if (ship.isOnTheRoad(background.getImage(), background.getDistanceTraveled(), background.getBackgroundHeight()) == false) {
-                    ship.detonate();
-                }
+                ship->move(-5.f, 0.f); // Przesuwanie w lewo
             }
             if (Keyboard::isKeyPressed(Keyboard::Right)) {
-                ship.move(5.f, 0.f); // Przesuwanie w prawo
-                if (ship.isOnTheRoad(background.getImage(), background.getDistanceTraveled(), background.getBackgroundHeight()) == false) {
-                    ship.detonate();
-                }
+                ship->move(5.f, 0.f); // Przesuwanie w prawo
             }
-            if (Keyboard::isKeyPressed(Keyboard::Up )) {
+            if (Keyboard::isKeyPressed(Keyboard::Up)) {
                 if (friendlyMissile.empty()) {
-                    GameElementPosition* ShipPosition = ship.getPosition();
+                    GameElementPosition* ShipPosition = ship->getPosition();
                     FriendlyMissile* newFriendlyMissile = new FriendlyMissile(ShipPosition->x, ShipPosition->y);
                     friendlyMissile.push_back(newFriendlyMissile);
                 }
             }
         }
         
-        
-        //update
-        for (FriendlyMissile* m : friendlyMissile) {
-            m->update();
-        }
-        for (Missile* m : missiles) {
-            m->update();
-            m->detectColision(&ship);
-            m ->detectBeingShotDown(&friendlyMissile);
-        }
-        
 
-        if (ship.HasShipFinished(background.getImage(), background.getDistanceTraveled(), background.getBackgroundHeight())) {
-            for (Missile* m : missiles) {
-                delete m;
-            }
-            missiles.erase(missiles.begin(), missiles.end());
-            background.ShowWinGameScreen();
-            return_value = Level2;
+        if (ship->isShipFinished() == false && ship->isOnTheRoad(bgr->getImage(), bgr->getDistanceTraveled(), bgr->getBackgroundHeight()) == false) {
+            ship->detonate();
+        }
+
+        //update
+        UpdateMissles(ship);
+
+
+        if (ship->HasShipFinished(bgr->getImage(), bgr->getDistanceTraveled(), bgr->getBackgroundHeight())) {
+            DeleteMissless(window);
+            bgr->ShowWinGameScreen();
+            return_value = NextLevel;
         }
         else {
-            if (ship.isShipDetonated()) {
-
-                for (Missile* m : missiles) {
-                    delete m;
-                }
-                missiles.erase(missiles.begin(), missiles.end());
-                background.ShowEndGameScreen();
+            if (ship->isShipDetonated()) {
+                DeleteMissless(window);
+                bgr->ShowEndGameScreen();
                 return_value = Title;
 
             }
         }
 
 
-        background.update();
-
-
+        bgr->update();
         // Rysowanie
-        okno->clear();
-        background.draw(okno);
+        window->clear();
+        bgr->draw(window);
         //if (ship.isShipDetonated() == false) { okno.draw(plansza); }
-        ship.draw(okno);
-        for (int i{}; i < missiles.size(); i++) {
-            Missile* m = missiles[i];
-            if (m != NULL) {
-                if (m->toBeDeleted()) {
-                    missiles.erase(missiles.begin() + i);
-                    delete m;
-                    break;
-                }
-                m->draw(okno);
-
-            }
-
-        }
-        for (int i{}; i < friendlyMissile.size(); i++) {
-            FriendlyMissile* m = friendlyMissile[i];
-            if (m != NULL) {
-                if (m->toBeDeleted()) {
-                    friendlyMissile.erase(friendlyMissile.begin() + i);
-                    delete m;
-                    break;
-                }
-                m->draw(okno);
-
-            }
-
-        }
-        okno->display();
+        ship->draw(window);
+        DeleteMissless(window);
+        window->display();
     }
 
-      return return_value;
+    return return_value;
+}
+void Game::DeleteMissless(RenderWindow* window)
+{
+    for (int i{}; i < missiles.size(); i++) {
+        Missile* m = missiles[i];
+        if (m != NULL) {
+            if (m->toBeDeleted()) {
+                missiles.erase(missiles.begin() + i);
+                delete m;
+                break;
+            }
+            m->draw(window);
+
+        }
+    }
+    for (int i{}; i < friendlyMissile.size(); i++) {
+        FriendlyMissile* m = friendlyMissile[i];
+        if (m != NULL) {
+            if (m->toBeDeleted()) {
+                friendlyMissile.erase(friendlyMissile.begin() + i);
+                delete m;
+                break;
+            }
+            m->draw(window);
+
+        }
+    }
+}
+void Game::UpdateMissles(Ship *ship)
+{
+    for (FriendlyMissile* m : friendlyMissile) {
+        m->update();
+    }
+    for (Missile* m : missiles) {
+        m->update();
+        m->detectColision(ship);
+        m->detectBeingShotDown(&friendlyMissile);
+    }
+}
+
+GameOptions Game::PlayLevel1(RenderWindow* okno) {
+    std::string path{ ".\\Textures\\background.jpg" };
+    Background background(path);
+    Ship ship;
+    
+    if (!GameInitialized(&background, &ship))
+    {
+        return GameOptions::InitialisationError;
+    }
+
+
+    GameOptions return_value{Title};
+
+
+    return_value = GameLoop(okno, &background, &ship);
+    if (return_value == NextLevel)
+        return_value = Level2;
+    return return_value;
+
 }
 
 GameOptions Game::PlayLevel2(RenderWindow* okno) {
     std::string path{ ".\\Textures\\background.jpg" };
     Background background(path);
-    if (background.if_initialised() == false)
-    {
-        Message_box box("nie udalo sie zaladowac tla", "blad");
-        return InitialisationError;
-    }
-
     Ship ship;
-    if (ship.if_initialised() == false) {
-        Message_box box("nie udalo sie zaladowac statku", "blad");
-        return InitialisationError;
-    }
-    std::vector<Missile*> missiles;
-    std::vector<FriendlyMissile*> friendlyMissile;
-
-
-
-    if (ship.if_initialised() == false) {
-        Message_box box("nie udalo sie zaladowac statku", "blad");
-        return InitialisationError;
-    }
 
     GameOptions return_value{ Title };
 
-    //interactions game_interactions;
-    DWORD start_time{ GetTickCount() };
-    DWORD CurrentTime{ GetTickCount() };
-
-
-
-    bool paused = false;
-    //-------------------------------------------------------------------------------
-    while (okno->isOpen()) {
-        Event event;
-        while (okno->pollEvent(event)) {
-            if (event.type == Event::Closed) {
-                okno->close();
-            }
-            if (event.type == Event::KeyReleased) {
-
-                if (event.key.code == Keyboard::P) {
-                    paused = !paused;
-                }
-            }
-        }
-        if (Keyboard::isKeyPressed(Keyboard::Space)) {
-            return_value = Title;
-            break;
-        }
-        if (GetTickCount64() - CurrentTime > constants::MISSILE_GENERATION_PERIOD && ship.isShipDetonated() == false && ship.isShipFinished() == false)
-        {
-            GameElementPosition* ShipPosition = ship.getPosition();
-            Missile* newMissile = new Missile(ShipPosition->x, 0);
-            missiles.push_back(newMissile);
-            CurrentTime = GetTickCount64();
-        }
-
-
-        // Obs³uga klawiatury: ruch statku
-        if (ship.isShipDetonated() == false && ship.isShipFinished() == false) {
-            if (Keyboard::isKeyPressed(Keyboard::Left)) {
-                ship.move(-5.f, 0.f); // Przesuwanie w lewo
-                if (ship.isOnTheRoad(background.getImage(), background.getDistanceTraveled(), background.getBackgroundHeight()) == false) {
-                    ship.detonate();
-                }
-            }
-            if (Keyboard::isKeyPressed(Keyboard::Right)) {
-                ship.move(5.f, 0.f); // Przesuwanie w prawo
-                if (ship.isOnTheRoad(background.getImage(), background.getDistanceTraveled(), background.getBackgroundHeight()) == false) {
-                    ship.detonate();
-                }
-            }
-            if (Keyboard::isKeyPressed(Keyboard::Up)) {
-                if (friendlyMissile.empty()) {
-                    GameElementPosition* ShipPosition = ship.getPosition();
-                    FriendlyMissile* newFriendlyMissile = new FriendlyMissile(ShipPosition->x, ShipPosition->y);
-                    friendlyMissile.push_back(newFriendlyMissile);
-                }
-            }
-        }
-
-
-        //update
-        for (FriendlyMissile* m : friendlyMissile) {
-            m->update();
-        }
-        for (Missile* m : missiles) {
-            m->update();
-            m->detectColision(&ship);
-            m->detectBeingShotDown(&friendlyMissile);
-        }
-
-
-        if (ship.HasShipFinished(background.getImage(), background.getDistanceTraveled(), background.getBackgroundHeight())) {
-            for (Missile* m : missiles) {
-                delete m;
-            }
-            missiles.erase(missiles.begin(), missiles.end());
-             background.ShowWinGameScreen();
-            return_value = Title;
-        }
-        else {
-            if (ship.isShipDetonated()) {
-
-                for (Missile* m : missiles) {
-                    delete m;
-                }
-                missiles.erase(missiles.begin(), missiles.end());
-                background.ShowEndGameScreen();
-                return_value = Title;
-
-            }
-        }
-
-
-        background.update();
-
-
-        // Rysowanie
-        okno->clear();
-        background.draw(okno);
-        //if (ship.isShipDetonated() == false) { okno.draw(plansza); }
-        ship.draw(okno);
-        for (int i{}; i < missiles.size(); i++) {
-            Missile* m = missiles[i];
-            if (m != NULL) {
-                if (m->toBeDeleted()) {
-                    missiles.erase(missiles.begin() + i);
-                    delete m;
-                    break;
-                }
-                m->draw(okno);
-
-            }
-
-        }
-        for (int i{}; i < friendlyMissile.size(); i++) {
-            FriendlyMissile* m = friendlyMissile[i];
-            if (m != NULL) {
-                if (m->toBeDeleted()) {
-                    friendlyMissile.erase(friendlyMissile.begin() + i);
-                    delete m;
-                    break;
-                }
-                m->draw(okno);
-
-            }
-
-        }
-        okno->display();
-    }
-
+    return_value = GameLoop(okno, &background, &ship);
+    if (return_value == NextLevel)
+        return_value = Title; // if there were more levels we would go to next level
     return return_value;
 }
 
 
-void Game::Credits() {
+GameOptions Game::Credits(RenderWindow* window) {
     std::string path(".\\Textures\\credits.jpg");
-    Background background(path);
+    StaticBackground background(path);
+    GameOptions return_value{ Title };
+    while (window->isOpen()) {
+        if (Keyboard::isKeyPressed(Keyboard::Escape)) {
+            return_value = Title;
+            break;
+        }
+        // Rysowanie
+        window->clear();
+        background.draw(window);
+        window->display();
+    }
+    
+    return return_value;
 }
 //---------------------------------------
 GameOptions Game::TitleScreen(RenderWindow* okno) {

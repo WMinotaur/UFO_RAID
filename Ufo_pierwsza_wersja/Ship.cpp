@@ -68,7 +68,7 @@ bool Ship::HasShipFinished(Image* image, int background_position, int background
         return true;
     }
     Vector2u imgSize = image->getSize();
-    int relative_y = background_height - constants::window_height - background_position + position.y;
+    int relative_y = background_height - constants::window_height - background_position + position.y -20;
     if (imgSize.y < relative_y)
         return false;
     if (imgSize.x < position.x)
@@ -79,22 +79,19 @@ bool Ship::HasShipFinished(Image* image, int background_position, int background
         return false; //Cheking if values are correct, so ship is not out of background
     }
     
-        Color color = image->getPixel(position.x, relative_y); //Left site of the ship
-        Color color2 = image->getPixel(position.x + sprite.getGlobalBounds().width, relative_y); // Right side of the ship
-        Color allowedColor = Color(0, 0, 0);
-        if (color == allowedColor && color2 == allowedColor)
-        {
-
-            this->isFinished = true;
-            return true;
-        }
-        else
-        {
-
-            return false;
-
-        }
-    
+    Color color = image->getPixel(position.x, relative_y); //Left site of the ship
+    Color color2 = image->getPixel(position.x + sprite.getGlobalBounds().width, relative_y); // Right side of the ship
+    Color allowedColor = Color(0, 0, 0);
+    if (color == allowedColor && color2 == allowedColor)
+    {
+        this->isFinished = true;
+        this->isDetonated = false;
+        return true;
+    }
+    else
+    {
+        return false;
+    }    
     
 }
 

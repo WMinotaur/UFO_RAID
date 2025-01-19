@@ -50,6 +50,7 @@ int main() {
             break;
 
         case CreditsGame:
+            options = game.Credits(&okno);
             break;
 
         case ExitGame:
