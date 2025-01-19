@@ -6,6 +6,8 @@ public:
     Message_box(std::string message, std::string title) {
         RectangleShape wi0adomosc;
         //todo:dorobic pozniej
+        //pauza
+        // mapy i obrazy
 
     }
 };
@@ -14,7 +16,7 @@ Game::Game() {
 };
 
 GameOptions Game::PlayLevel1(RenderWindow* okno) {
-    std::string path{ ".\\Textures\\background_test.jpg" };
+    std::string path{ ".\\Textures\\background.jpg" };
     Background background(path);
     if (background.if_initialised() == false)
     {
@@ -45,7 +47,7 @@ GameOptions Game::PlayLevel1(RenderWindow* okno) {
 
 
 
-
+    bool paused = false;
     //-------------------------------------------------------------------------------
     while (okno->isOpen()) {
         Event event;
@@ -53,16 +55,26 @@ GameOptions Game::PlayLevel1(RenderWindow* okno) {
             if (event.type == Event::Closed) {
                 okno->close();
             }
+            if (event.type == Event::KeyReleased) {
+                
+                if (event.key.code == Keyboard::P) {
+                    paused = !paused;
+                }
+            }
         }
         if (Keyboard::isKeyPressed(Keyboard::Escape)) {
             return_value = Title;
             break;
         }
         if (Keyboard::isKeyPressed(Keyboard::Space)) {
+            
             if (return_value != Title) {
                 break;
             }
-            
+    
+        }
+        if (paused) {
+            continue;
         }
         if (GetTickCount64() - CurrentTime > constants::MISSILE_GENERATION_PERIOD && ship.isShipDetonated() == false && ship.isShipFinished() == false)
         {
@@ -202,13 +214,19 @@ GameOptions Game::PlayLevel2(RenderWindow* okno) {
 
 
 
-
+    bool paused = false;
     //-------------------------------------------------------------------------------
     while (okno->isOpen()) {
         Event event;
         while (okno->pollEvent(event)) {
             if (event.type == Event::Closed) {
                 okno->close();
+            }
+            if (event.type == Event::KeyReleased) {
+
+                if (event.key.code == Keyboard::P) {
+                    paused = !paused;
+                }
             }
         }
         if (Keyboard::isKeyPressed(Keyboard::Space)) {
@@ -380,40 +398,7 @@ GameOptions Game::TitleScreen(RenderWindow* okno) {
             
             }
         }
-        if (Keyboard::isKeyPressed(Keyboard::Escape)) {
-            okno->close();
-        }
-        // Obs³uga klawiatury: ruch statku
-      /*
-        if (Keyboard::isKeyPressed(Keyboard::Down)) {
-            pointer.moveDown(); 
-                
-        }
-        if (Keyboard::isKeyPressed(Keyboard::Up)) {
-            pointer.moveUp(); 
-                
-        }
-
-        if (Keyboard::isKeyPressed(Keyboard::Enter)) {
-            choice = pointer.getCurrentSelection();
-            switch (choice) {
-                case 0:
-                    return Play;
-                    break;
-                case 1:
-                    return CreditsGame;
-                    break;
-                case 2:
-                    return ExitGame;
-                    break;
-                default:
-                    return InitialisationError;
-                    break;
-            }
-          
-        }
-        */
-
+       
         //update
 
         // Rysowanie
