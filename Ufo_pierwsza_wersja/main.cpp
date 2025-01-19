@@ -20,7 +20,6 @@ using namespace sf;
 // pociski z samolotu
 // fuel
 // przyspieszenie
-// starting screen 
 
 
 
@@ -36,11 +35,18 @@ int main() {
 
     Game game;
     bool isGameRunning{ true };
+    GameOptions options = Title;
     while (isGameRunning) {
-        GameOptions options = game.TitleScreen(&okno);
+        
         switch (options) {
-        case Play:
-            game.PlayGame(&okno);
+        case Title:
+            options = game.TitleScreen(&okno);
+            break;
+        case Level1:
+            options = game.PlayLevel1(&okno);
+            break;
+        case Level2:
+            options = game.PlayLevel2(&okno);
             break;
 
         case CreditsGame:

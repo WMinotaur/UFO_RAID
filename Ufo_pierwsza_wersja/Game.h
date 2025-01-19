@@ -15,10 +15,14 @@
 #include <windows.h>
 #include "Pointer.h"
 #include "StaticBackground.h"
+#include "FriendlyMissile.h"
+
 enum GameOptions {
-	Play = 1,
+	Level1 = 1,
+	Level2,
 	CreditsGame,
 	ExitGame,
+	Title,
 	InitialisationError
 
 };
@@ -26,7 +30,8 @@ class Game
 {
 public:
 	Game();
-	void PlayGame(RenderWindow* okno);
+	GameOptions PlayLevel1(RenderWindow* okno);
+	GameOptions PlayLevel2(RenderWindow* okno);
 	GameOptions TitleScreen(RenderWindow* okno);
 	void Credits();
 };

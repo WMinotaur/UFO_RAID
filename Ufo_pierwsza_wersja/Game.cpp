@@ -13,27 +13,32 @@ public:
 Game::Game() {
 };
 
-void Game::PlayGame(RenderWindow* okno) {
-    Background background;
+GameOptions Game::PlayLevel1(RenderWindow* okno) {
+    std::string path{ ".\\Textures\\background_test.jpg" };
+    Background background(path);
     if (background.if_initialised() == false)
     {
         Message_box box("nie udalo sie zaladowac tla", "blad");
-        return;
+        return InitialisationError;
     }
 
     Ship ship;
     if (ship.if_initialised() == false) {
         Message_box box("nie udalo sie zaladowac statku", "blad");
-        return;
+        return InitialisationError;
     }
     std::vector<Missile*> missiles;
+    std::vector<FriendlyMissile*> friendlyMissile;
 
 
 
     if (ship.if_initialised() == false) {
         Message_box box("nie udalo sie zaladowac statku", "blad");
-        return;
+        return InitialisationError;
     }
+
+    GameOptions return_value{Title};
+
     //interactions game_interactions;
     DWORD start_time{ GetTickCount() };
     DWORD CurrentTime{ GetTickCount() };
@@ -50,7 +55,14 @@ void Game::PlayGame(RenderWindow* okno) {
             }
         }
         if (Keyboard::isKeyPressed(Keyboard::Escape)) {
-            okno->close();
+            return_value = Title;
+            break;
+        }
+        if (Keyboard::isKeyPressed(Keyboard::Space)) {
+            if (return_value != Title) {
+                break;
+            }
+            
         }
         if (GetTickCount64() - CurrentTime > constants::MISSILE_GENERATION_PERIOD && ship.isShipDetonated() == false && ship.isShipFinished() == false)
         {
@@ -75,19 +87,34 @@ void Game::PlayGame(RenderWindow* okno) {
                     ship.detonate();
                 }
             }
+            if (Keyboard::isKeyPressed(Keyboard::Up )) {
+                if (friendlyMissile.empty()) {
+                    GameElementPosition* ShipPosition = ship.getPosition();
+                    FriendlyMissile* newFriendlyMissile = new FriendlyMissile(ShipPosition->x, ShipPosition->y);
+                    friendlyMissile.push_back(newFriendlyMissile);
+                }
+            }
         }
+        
+        
         //update
-
+        for (FriendlyMissile* m : friendlyMissile) {
+            m->update();
+        }
         for (Missile* m : missiles) {
             m->update();
             m->detectColision(&ship);
+            m ->detectBeingShotDown(&friendlyMissile);
         }
+        
+
         if (ship.HasShipFinished(background.getImage(), background.getDistanceTraveled(), background.getBackgroundHeight())) {
             for (Missile* m : missiles) {
                 delete m;
             }
             missiles.erase(missiles.begin(), missiles.end());
             background.ShowWinGameScreen();
+            return_value = Level2;
         }
         else {
             if (ship.isShipDetonated()) {
@@ -97,6 +124,8 @@ void Game::PlayGame(RenderWindow* okno) {
                 }
                 missiles.erase(missiles.begin(), missiles.end());
                 background.ShowEndGameScreen();
+                return_value = Title;
+
             }
         }
 
@@ -122,14 +151,180 @@ void Game::PlayGame(RenderWindow* okno) {
             }
 
         }
+        for (int i{}; i < friendlyMissile.size(); i++) {
+            FriendlyMissile* m = friendlyMissile[i];
+            if (m != NULL) {
+                if (m->toBeDeleted()) {
+                    friendlyMissile.erase(friendlyMissile.begin() + i);
+                    delete m;
+                    break;
+                }
+                m->draw(okno);
+
+            }
+
+        }
         okno->display();
     }
 
+      return return_value;
+}
+
+GameOptions Game::PlayLevel2(RenderWindow* okno) {
+    std::string path{ ".\\Textures\\background.jpg" };
+    Background background(path);
+    if (background.if_initialised() == false)
+    {
+        Message_box box("nie udalo sie zaladowac tla", "blad");
+        return InitialisationError;
+    }
+
+    Ship ship;
+    if (ship.if_initialised() == false) {
+        Message_box box("nie udalo sie zaladowac statku", "blad");
+        return InitialisationError;
+    }
+    std::vector<Missile*> missiles;
+    std::vector<FriendlyMissile*> friendlyMissile;
+
+
+
+    if (ship.if_initialised() == false) {
+        Message_box box("nie udalo sie zaladowac statku", "blad");
+        return InitialisationError;
+    }
+
+    GameOptions return_value{ Title };
+
+    //interactions game_interactions;
+    DWORD start_time{ GetTickCount() };
+    DWORD CurrentTime{ GetTickCount() };
+
+
+
+
+    //-------------------------------------------------------------------------------
+    while (okno->isOpen()) {
+        Event event;
+        while (okno->pollEvent(event)) {
+            if (event.type == Event::Closed) {
+                okno->close();
+            }
+        }
+        if (Keyboard::isKeyPressed(Keyboard::Space)) {
+            return_value = Title;
+            break;
+        }
+        if (GetTickCount64() - CurrentTime > constants::MISSILE_GENERATION_PERIOD && ship.isShipDetonated() == false && ship.isShipFinished() == false)
+        {
+            GameElementPosition* ShipPosition = ship.getPosition();
+            Missile* newMissile = new Missile(ShipPosition->x, 0);
+            missiles.push_back(newMissile);
+            CurrentTime = GetTickCount64();
+        }
+
+
+        // Obs³uga klawiatury: ruch statku
+        if (ship.isShipDetonated() == false && ship.isShipFinished() == false) {
+            if (Keyboard::isKeyPressed(Keyboard::Left)) {
+                ship.move(-5.f, 0.f); // Przesuwanie w lewo
+                if (ship.isOnTheRoad(background.getImage(), background.getDistanceTraveled(), background.getBackgroundHeight()) == false) {
+                    ship.detonate();
+                }
+            }
+            if (Keyboard::isKeyPressed(Keyboard::Right)) {
+                ship.move(5.f, 0.f); // Przesuwanie w prawo
+                if (ship.isOnTheRoad(background.getImage(), background.getDistanceTraveled(), background.getBackgroundHeight()) == false) {
+                    ship.detonate();
+                }
+            }
+            if (Keyboard::isKeyPressed(Keyboard::Up)) {
+                if (friendlyMissile.empty()) {
+                    GameElementPosition* ShipPosition = ship.getPosition();
+                    FriendlyMissile* newFriendlyMissile = new FriendlyMissile(ShipPosition->x, ShipPosition->y);
+                    friendlyMissile.push_back(newFriendlyMissile);
+                }
+            }
+        }
+
+
+        //update
+        for (FriendlyMissile* m : friendlyMissile) {
+            m->update();
+        }
+        for (Missile* m : missiles) {
+            m->update();
+            m->detectColision(&ship);
+            m->detectBeingShotDown(&friendlyMissile);
+        }
+
+
+        if (ship.HasShipFinished(background.getImage(), background.getDistanceTraveled(), background.getBackgroundHeight())) {
+            for (Missile* m : missiles) {
+                delete m;
+            }
+            missiles.erase(missiles.begin(), missiles.end());
+             background.ShowWinGameScreen();
+            return_value = Title;
+        }
+        else {
+            if (ship.isShipDetonated()) {
+
+                for (Missile* m : missiles) {
+                    delete m;
+                }
+                missiles.erase(missiles.begin(), missiles.end());
+                background.ShowEndGameScreen();
+                return_value = Title;
+
+            }
+        }
+
+
+        background.update();
+
+
+        // Rysowanie
+        okno->clear();
+        background.draw(okno);
+        //if (ship.isShipDetonated() == false) { okno.draw(plansza); }
+        ship.draw(okno);
+        for (int i{}; i < missiles.size(); i++) {
+            Missile* m = missiles[i];
+            if (m != NULL) {
+                if (m->toBeDeleted()) {
+                    missiles.erase(missiles.begin() + i);
+                    delete m;
+                    break;
+                }
+                m->draw(okno);
+
+            }
+
+        }
+        for (int i{}; i < friendlyMissile.size(); i++) {
+            FriendlyMissile* m = friendlyMissile[i];
+            if (m != NULL) {
+                if (m->toBeDeleted()) {
+                    friendlyMissile.erase(friendlyMissile.begin() + i);
+                    delete m;
+                    break;
+                }
+                m->draw(okno);
+
+            }
+
+        }
+        okno->display();
+    }
+
+    return return_value;
 }
 
 
 void Game::Credits() {
-    Background background;
+    std::string path(".\\Textures\\credits.jpg");
+    Background background(path);
 }
 //---------------------------------------
 GameOptions Game::TitleScreen(RenderWindow* okno) {
@@ -168,7 +363,7 @@ GameOptions Game::TitleScreen(RenderWindow* okno) {
                     choice = pointer.getCurrentSelection();
                     switch (choice) {
                     case 0:
-                        return Play;
+                        return Level1;
                         break;
                     case 1:
                         return CreditsGame;

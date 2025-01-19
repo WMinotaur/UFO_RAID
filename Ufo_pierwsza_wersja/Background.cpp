@@ -1,6 +1,6 @@
 #include "Background.h"
 
-Background::Background():moving_GameElement(){
+Background::Background(std::string path):moving_GameElement(){
     Create(path);
     
     background_height = sprite.getGlobalBounds().height;
@@ -8,6 +8,12 @@ Background::Background():moving_GameElement(){
     velocity = { constants::background_velocity_x , constants::background_velocity_y };
     
 }
+std::string Background::Level1() {
+    return level1_path;
+}
+
+
+
 
 void Background::ShowEndGameScreen() {
     Create(gameover);
