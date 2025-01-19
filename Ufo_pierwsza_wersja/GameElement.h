@@ -5,8 +5,11 @@ using namespace sf;
 
 class GameElementPosition {
 public:
-    float x{};
-    float y{};
+    int x{};
+    int y{};
+    GameElementPosition(int PosX, int PosY);
+    GameElementPosition();
+    
 };
 
 

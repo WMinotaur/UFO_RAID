@@ -31,3 +31,13 @@ GameElementPosition* GameElement::getPosition() {
 moving_GameElement::moving_GameElement() {
 
 };
+GameElementPosition::GameElementPosition(int PosX, int PosY) {
+    
+        x = PosX;
+        y = PosY;
+    
+}
+GameElementPosition::GameElementPosition() {
+    x = 0;
+    y = 0;
+}

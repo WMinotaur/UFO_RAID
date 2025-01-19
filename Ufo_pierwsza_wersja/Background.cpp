@@ -30,4 +30,8 @@ int Background::getBackgroundHeight() {
     return background_height;
 }
 
-
+void Background::ShowWinGameScreen() {
+    Create(gameWon);
+    sprite.setPosition(0.0f, 0.0f);
+    velocity = { 0,0 };
+}
