@@ -16,6 +16,7 @@
 #include "Pointer.h"
 #include "StaticBackground.h"
 #include "FriendlyMissile.h"
+#include <windows.h>
 
 enum GameOptions {
 	Level1 = 1,
@@ -35,8 +36,10 @@ private:
 	bool GameInitialized(Background* bkg, Ship* shp);
 	bool paused;
 	GameOptions GameLoop(RenderWindow* window, Background* bgr, Ship *ship );
-	void DeleteMissless(RenderWindow* window);
-	void UpdateMissles(Ship* ship);
+	void DeleteMissiless(RenderWindow* window);
+	void UpdateMissiles(Ship* ship);
+	std::string executable_path{};
+	void DeleteAllMissiles(RenderWindow* window);
 public:
 	Game();
 	GameOptions PlayLevel1(RenderWindow* okno);

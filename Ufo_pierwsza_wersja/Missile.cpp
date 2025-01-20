@@ -31,11 +31,21 @@ void Missile::detectColision(Ship* ship) {
 }
 void Missile::detectBeingShotDown(std::vector<FriendlyMissile*>* friendlyMissile) {
 	for (FriendlyMissile* m : *friendlyMissile) {
-		auto shipBox = m->get_bounding_box();
+		auto FriendlyBox = m->get_bounding_box();
 		auto missile = this->get_bounding_box();
-		if (missile.intersects(shipBox))
+		if (missile.intersects(FriendlyBox))
 		{
 			toDelete = true;
+			m->Delete();
 		}
 	}
+}
+void Missile::detectOutOfScreen(float window_height) {
+	if (this->getPosition()->y >= window_height)
+		this->toDelete = true;
+}
+
+
+Missile::~Missile() {
+	
 }

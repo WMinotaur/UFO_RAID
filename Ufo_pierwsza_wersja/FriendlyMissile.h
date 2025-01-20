@@ -14,5 +14,6 @@ public:
 	FriendlyMissile(float x, float y);
 	void update();
 	bool toBeDeleted();
+	void Delete();
 };
 

@@ -14,6 +14,17 @@ public:
 
 Game::Game() {
     paused = false;
+    wchar_t path[MAX_PATH];
+    // Pobranie pe³nej œcie¿ki do pliku wykonywalnego
+    GetModuleFileNameW(NULL, path, MAX_PATH);
+    std::wstring ws(path);
+    std::string executablePath(ws.begin(), ws.end());
+    // Konwersja do stringa
+    size_t lastSlash = executablePath.find_last_of("\\/");
+
+    // Uzyskanie katalogu
+    executable_path = executablePath.substr(0, lastSlash);
+
 };
 
 bool Game::GameInitialized(Background *bkg, Ship *shp)
@@ -28,14 +39,14 @@ bool Game::GameInitialized(Background *bkg, Ship *shp)
         Message_box box("nie udalo sie zaladowac statku", "blad");
         return false;
     }
-
+    return true;
 }
 GameOptions Game::GameLoop(RenderWindow* window, Background* bgr, Ship *ship)
 {
     GameOptions return_value{ Title };
     //interactions game_interactions;
-    DWORD start_time{ GetTickCount() };
-    DWORD CurrentTime{ GetTickCount() };
+    ULONGLONG start_time{ GetTickCount() };
+    ULONGLONG CurrentTime{ GetTickCount() };
 
     while (window->isOpen()) {
         Event event;
@@ -96,17 +107,17 @@ GameOptions Game::GameLoop(RenderWindow* window, Background* bgr, Ship *ship)
         }
 
         //update
-        UpdateMissles(ship);
+        UpdateMissiles(ship);
 
 
         if (ship->HasShipFinished(bgr->getImage(), bgr->getDistanceTraveled(), bgr->getBackgroundHeight())) {
-            DeleteMissless(window);
+            DeleteAllMissiles(window);
             bgr->ShowWinGameScreen();
             return_value = NextLevel;
         }
         else {
             if (ship->isShipDetonated()) {
-                DeleteMissless(window);
+                DeleteAllMissiles(window);
                 bgr->ShowEndGameScreen();
                 return_value = Title;
 
@@ -120,15 +131,32 @@ GameOptions Game::GameLoop(RenderWindow* window, Background* bgr, Ship *ship)
         bgr->draw(window);
         //if (ship.isShipDetonated() == false) { okno.draw(plansza); }
         ship->draw(window);
-        DeleteMissless(window);
+        DeleteMissiless(window);
         window->display();
     }
 
     return return_value;
 }
-void Game::DeleteMissless(RenderWindow* window)
+void Game::DeleteAllMissiles(RenderWindow* window) {
+    for (size_t i{}; i < missiles.size(); i++) {
+        Missile* m = missiles[i];
+        if (m != NULL) {     
+            missiles.erase(missiles.begin() + i);
+            delete m;
+        }
+    }
+    for (size_t i{}; i < friendlyMissile.size(); i++) {
+        FriendlyMissile* m = friendlyMissile[i];
+        if (m != NULL) {
+            friendlyMissile.erase(friendlyMissile.begin() + i);
+            delete m;
+        }
+    }
+}
+
+void Game::DeleteMissiless(RenderWindow* window)
 {
-    for (int i{}; i < missiles.size(); i++) {
+    for (size_t i{}; i < missiles.size(); i++) {
         Missile* m = missiles[i];
         if (m != NULL) {
             if (m->toBeDeleted()) {
@@ -140,7 +168,7 @@ void Game::DeleteMissless(RenderWindow* window)
 
         }
     }
-    for (int i{}; i < friendlyMissile.size(); i++) {
+    for (size_t i{}; i < friendlyMissile.size(); i++) {
         FriendlyMissile* m = friendlyMissile[i];
         if (m != NULL) {
             if (m->toBeDeleted()) {
@@ -153,7 +181,7 @@ void Game::DeleteMissless(RenderWindow* window)
         }
     }
 }
-void Game::UpdateMissles(Ship *ship)
+void Game::UpdateMissiles(Ship *ship)
 {
     for (FriendlyMissile* m : friendlyMissile) {
         m->update();
@@ -163,6 +191,7 @@ void Game::UpdateMissles(Ship *ship)
         m->detectColision(ship);
         m->detectBeingShotDown(&friendlyMissile);
     }
+
 }
 
 GameOptions Game::PlayLevel1(RenderWindow* okno) {
@@ -219,7 +248,9 @@ GameOptions Game::Credits(RenderWindow* window) {
 }
 //---------------------------------------
 GameOptions Game::TitleScreen(RenderWindow* okno) {
-    StaticBackground background(".\\Textures\\TittleScreen.jpg");
+    StaticBackground background(this->executable_path+"\\Textures\\TittleScreen.jpg");
+    //StaticBackground background("C:\\git\\jpo_ufo_gra\\Textures\\TittleScreen.jpg");
+
     if (background.if_initialised() == false)
     {
         Message_box box("nie udalo sie zaladowac tla", "blad");
@@ -280,5 +311,6 @@ GameOptions Game::TitleScreen(RenderWindow* okno) {
         pointer.draw(okno);
         okno->display();
     }
+    return Title;
 };
 

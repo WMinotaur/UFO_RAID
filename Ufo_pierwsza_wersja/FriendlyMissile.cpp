@@ -16,6 +16,9 @@ void FriendlyMissile::update() {
 		toDelete = true;
 	}
 }
+void FriendlyMissile::Delete() {
+	toDelete = true;
+}
 
 bool FriendlyMissile::toBeDeleted() {
 	return toDelete;

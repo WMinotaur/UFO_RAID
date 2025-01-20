@@ -28,11 +28,11 @@ void Background::update() {
     distance_traveled += velocity.y;
 }
 
-int Background::getDistanceTraveled() {
+float Background::getDistanceTraveled() {
     return distance_traveled;
 }
 
-int Background::getBackgroundHeight() {
+float Background::getBackgroundHeight() {
     return background_height;
 }
 

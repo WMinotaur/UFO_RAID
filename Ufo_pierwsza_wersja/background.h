@@ -12,8 +12,8 @@ private:
 	std::string level2_path{ ".\\Textures\\background.jpg" };
 	std::string gameover{ ".\\Textures\\background_lost.jpg" };
 	std::string gameWon{ ".\\Textures\\background_kopia.jpg" };
-	int distance_traveled{ 0 };
-	int background_height{ 0 };
+	float distance_traveled{ 0 };
+	float background_height{ 0 };
 
 public:
 	Background(std::string path);
@@ -21,7 +21,7 @@ public:
 	void ShowEndGameScreen();
 	Image* getImage();
 	void update();
-	int getDistanceTraveled();
-	int getBackgroundHeight();
+	float getDistanceTraveled();
+	float getBackgroundHeight();
 	void ShowWinGameScreen();
 };

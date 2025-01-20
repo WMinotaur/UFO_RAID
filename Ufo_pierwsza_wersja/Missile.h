@@ -17,6 +17,8 @@ public:
 	bool toBeDeleted();
 	void detectColision(Ship* ship);
 	void detectBeingShotDown(std::vector<FriendlyMissile*>* friendlyMissile);
+	void detectOutOfScreen(float window_height);
+	~Missile();
 
 
 };

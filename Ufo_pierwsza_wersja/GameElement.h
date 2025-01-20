@@ -5,9 +5,9 @@ using namespace sf;
 
 class GameElementPosition {
 public:
-    int x{};
-    int y{};
-    GameElementPosition(int PosX, int PosY);
+    float x{};
+    float y{};
+    GameElementPosition(float PosX, float PosY);
     GameElementPosition();
     
 };

@@ -18,7 +18,7 @@ public:
     void detonate();
     void draw(RenderWindow* okno);
     bool isShipDetonated();
-    bool isOnTheRoad(Image* image, int background_position, int background_height);
-    bool HasShipFinished(Image* image, int background_position, int background_height);
+    bool isOnTheRoad(Image* image, float background_position, float background_height);
+    bool HasShipFinished(Image* image, float background_position, float background_height);
     bool isShipFinished();
 };
