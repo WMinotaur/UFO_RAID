@@ -31,8 +31,8 @@ enum GameOptions {
 class Game
 {
 private:
-	std::vector<Missile*> missiles;
-	std::vector<FriendlyMissile*> friendlyMissile;
+	std::vector<AbstractMissile*> missiles;
+	std::vector<AbstractMissile*> friendlyMissile;
 	bool GameInitialized(Background* bkg, Ship* shp);
 	bool paused;
 	GameOptions GameLoop(RenderWindow* window, Background* bgr, Ship *ship );

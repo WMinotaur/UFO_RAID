@@ -1,6 +1,6 @@
 #include "FriendlyMissile.h"
 
-FriendlyMissile::FriendlyMissile(float x,float y) : moving_GameElement() {
+FriendlyMissile::FriendlyMissile(float x,float y) : AbstractMissile() {
 	Create(path);
 	sprite.setScale(0.1f, 0.1f);
 	sprite.setPosition(x, y);
@@ -22,4 +22,12 @@ void FriendlyMissile::Delete() {
 
 bool FriendlyMissile::toBeDeleted() {
 	return toDelete;
+}
+void FriendlyMissile::detectColision(GameElement* element)
+{
+	// do nothing
+}
+void FriendlyMissile::detectBeingShotDown(std::vector<AbstractMissile*>* friendlyMissile)
+{
+	// do nothing
 }

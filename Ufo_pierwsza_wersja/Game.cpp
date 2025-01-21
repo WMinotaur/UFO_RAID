@@ -78,7 +78,7 @@ GameOptions Game::GameLoop(RenderWindow* window, Background* bgr, Ship *ship)
         if (GetTickCount64() - CurrentTime > constants::MISSILE_GENERATION_PERIOD && ship->isShipDetonated() == false && ship->isShipFinished() == false)
         {
             GameElementPosition* ShipPosition = ship->getPosition();
-            Missile* newMissile = new Missile(ShipPosition->x, 0);
+            AbstractMissile* newMissile = MissileFactory(enemy, ShipPosition->x, 0);
             missiles.push_back(newMissile);
             CurrentTime = GetTickCount64();
         }
@@ -95,7 +95,7 @@ GameOptions Game::GameLoop(RenderWindow* window, Background* bgr, Ship *ship)
             if (Keyboard::isKeyPressed(Keyboard::Up)) {
                 if (friendlyMissile.empty()) {
                     GameElementPosition* ShipPosition = ship->getPosition();
-                    FriendlyMissile* newFriendlyMissile = new FriendlyMissile(ShipPosition->x, ShipPosition->y);
+                    AbstractMissile* newFriendlyMissile = MissileFactory(friendly, ShipPosition->x, ShipPosition->y);
                     friendlyMissile.push_back(newFriendlyMissile);
                 }
             }
@@ -139,14 +139,14 @@ GameOptions Game::GameLoop(RenderWindow* window, Background* bgr, Ship *ship)
 }
 void Game::DeleteAllMissiles(RenderWindow* window) {
     for (size_t i{}; i < missiles.size(); i++) {
-        Missile* m = missiles[i];
+        AbstractMissile* m = missiles[i];
         if (m != NULL) {     
             missiles.erase(missiles.begin() + i);
             delete m;
         }
     }
     for (size_t i{}; i < friendlyMissile.size(); i++) {
-        FriendlyMissile* m = friendlyMissile[i];
+        AbstractMissile* m = friendlyMissile[i];
         if (m != NULL) {
             friendlyMissile.erase(friendlyMissile.begin() + i);
             delete m;
@@ -157,7 +157,7 @@ void Game::DeleteAllMissiles(RenderWindow* window) {
 void Game::DeleteMissiless(RenderWindow* window)
 {
     for (size_t i{}; i < missiles.size(); i++) {
-        Missile* m = missiles[i];
+        AbstractMissile* m = missiles[i];
         if (m != NULL) {
             if (m->toBeDeleted()) {
                 missiles.erase(missiles.begin() + i);
@@ -169,7 +169,7 @@ void Game::DeleteMissiless(RenderWindow* window)
         }
     }
     for (size_t i{}; i < friendlyMissile.size(); i++) {
-        FriendlyMissile* m = friendlyMissile[i];
+        AbstractMissile* m = friendlyMissile[i];
         if (m != NULL) {
             if (m->toBeDeleted()) {
                 friendlyMissile.erase(friendlyMissile.begin() + i);
@@ -183,10 +183,10 @@ void Game::DeleteMissiless(RenderWindow* window)
 }
 void Game::UpdateMissiles(Ship *ship)
 {
-    for (FriendlyMissile* m : friendlyMissile) {
+    for (AbstractMissile* m : friendlyMissile) {
         m->update();
     }
-    for (Missile* m : missiles) {
+    for (AbstractMissile* m : missiles) {
         m->update();
         m->detectColision(ship);
         m->detectBeingShotDown(&friendlyMissile);
@@ -249,7 +249,6 @@ GameOptions Game::Credits(RenderWindow* window) {
 //---------------------------------------
 GameOptions Game::TitleScreen(RenderWindow* okno) {
     StaticBackground background(this->executable_path+"\\Textures\\TittleScreen.jpg");
-    //StaticBackground background("C:\\git\\jpo_ufo_gra\\Textures\\TittleScreen.jpg");
 
     if (background.if_initialised() == false)
     {

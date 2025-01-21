@@ -1,7 +1,7 @@
 #include "Missile.h"
 
 
-Missile::Missile(float x, float y) : moving_GameElement() {
+Missile::Missile(float x, float y) : AbstractMissile() {
 	Create(path);
 	sprite.setScale(0.1f, 0.1f);
 	sprite.setPosition(x, y);
@@ -21,7 +21,10 @@ void Missile::update() {
 bool Missile::toBeDeleted() {
 	return toDelete;
 }
-void Missile::detectColision(Ship* ship) {
+void Missile::Delete() {
+	this->toDelete = true;
+}
+void Missile::detectColision(GameElement* ship) {
 	auto shipBox = ship->get_bounding_box();
 	auto missile = this->get_bounding_box();
 	if (missile.intersects(shipBox))
@@ -29,8 +32,8 @@ void Missile::detectColision(Ship* ship) {
 		ship->detonate();
 	}
 }
-void Missile::detectBeingShotDown(std::vector<FriendlyMissile*>* friendlyMissile) {
-	for (FriendlyMissile* m : *friendlyMissile) {
+void Missile::detectBeingShotDown(std::vector<AbstractMissile*>* friendlyMissile) {
+	for (AbstractMissile* m : *friendlyMissile) {
 		auto FriendlyBox = m->get_bounding_box();
 		auto missile = this->get_bounding_box();
 		if (missile.intersects(FriendlyBox))

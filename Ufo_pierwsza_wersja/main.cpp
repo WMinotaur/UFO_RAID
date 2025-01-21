@@ -65,9 +65,6 @@ void displayMessageBox(const std::string& message) {
 int main() {
     srand(static_cast<unsigned>(time(NULL)));
     std::string path{ "C:\\git\\jpo_ufo_gra" };
-    std::filesystem::current_path(path);
-    std::filesystem::path xxx = std::filesystem::current_path();
-
 
     RenderWindow okno(VideoMode::getDesktopMode(), "gra_ufo", sf::Style::Fullscreen);
     okno.setFramerateLimit(60);
@@ -78,34 +75,27 @@ int main() {
     while (isGameRunning) {
         
         switch (options) {
-        case Title:
-            options = game.TitleScreen(&okno);
-            break;
-        case Level1:
-            options = game.PlayLevel1(&okno);
-            break;
-        case Level2:
-            options = game.PlayLevel2(&okno);
-            break;
-
-        case CreditsGame:
-            options = game.Credits(&okno);
-            break;
-
-        case ExitGame:
-            isGameRunning = false; 
-            break;
-        case InitialisationError:
-            displayMessageBox("Game cannot be initialized, exiting");
-            isGameRunning = false;
-            break;
- 
+            case Title:
+                options = game.TitleScreen(&okno);
+                break;
+            case Level1:
+                options = game.PlayLevel1(&okno);
+                break;
+            case Level2:
+                options = game.PlayLevel2(&okno);
+                break;
+            case CreditsGame:
+                options = game.Credits(&okno);
+                break;
+            case ExitGame:
+                isGameRunning = false; 
+                break;
+            case InitialisationError:
+                displayMessageBox("Game cannot be initialized, exiting");
+                isGameRunning = false;
+                break; 
         }
-
-    }
-
-    //------------------------------------------------------------------------- sprawdzanie czy sie wczytalo
-   
+    } 
     
     return 0;
 }

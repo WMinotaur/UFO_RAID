@@ -41,3 +41,7 @@ GameElementPosition::GameElementPosition() {
     x = 0;
     y = 0;
 }
+void GameElement::detonate()
+{
+    //do nothing
+}

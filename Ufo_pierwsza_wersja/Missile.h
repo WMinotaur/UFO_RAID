@@ -5,21 +5,22 @@
 #include <iostream>
 #include "Ship.h"
 #include "FriendlyMissile.h"
+#include "AbstractMissile.h"
 
-class Missile : public moving_GameElement
+class Missile : public AbstractMissile
 {
 private:
 	std::string path{ ".\\Textures\\bullet3.png" };
 	bool toDelete{ false };
-public:
 	Missile(float x, float y);
+public:
 	void update();
 	bool toBeDeleted();
-	void detectColision(Ship* ship);
-	void detectBeingShotDown(std::vector<FriendlyMissile*>* friendlyMissile);
+	void Delete();
+	void detectColision(GameElement* ship);
+	void detectBeingShotDown(std::vector<AbstractMissile*>* friendlyMissile);
 	void detectOutOfScreen(float window_height);
 	~Missile();
-
-
+	friend AbstractMissile* MissileFactory(MissileType type, float x, float y);
 };
 

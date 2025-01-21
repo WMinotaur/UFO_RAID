@@ -29,6 +29,7 @@ public:
     void Create(std::string image_path);
     FloatRect get_bounding_box() const noexcept;
     GameElementPosition* getPosition();
+    virtual void detonate();
 
 };
 
