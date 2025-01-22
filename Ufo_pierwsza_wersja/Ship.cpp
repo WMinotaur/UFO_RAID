@@ -82,7 +82,7 @@ bool Ship::HasShipFinished(Image* image, float background_position, float backgr
     {
         return false; //Cheking if values are correct, so ship is not out of background
     }
-    if (relative_y < 100)
+    if (relative_y < 1000)
     {
         this->isFinished = true;
         this->isDetonated = false;

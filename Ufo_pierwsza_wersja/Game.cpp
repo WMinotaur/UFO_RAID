@@ -191,7 +191,8 @@ GameOptions Game::PlayLevel1(RenderWindow* okno) {
     std::string path{ ".\\Textures\\background_level1.jpg" };
     std::string next_path{ ".\\Textures\\background_next.png" };
     Background background(path,next_path);
-    Ship ship(Color(8, 175, 219));
+    Ship ship(Color(212, 106, 48));
+    
     
     if (!GameInitialized(&background, &ship))
     {
@@ -210,10 +211,10 @@ GameOptions Game::PlayLevel1(RenderWindow* okno) {
 }
 
 GameOptions Game::PlayLevel2(RenderWindow* okno) {
-    std::string path{ ".\\Textures\\background.jpg" };
+    std::string path{ ".\\Textures\\background_level2.jpg" };
     std::string win_path{ ".\\Textures\\background_won.jpg" };
     Background background(path,win_path);
-    Ship ship(Color(212, 106, 48));
+    Ship ship(Color(8, 175, 219));
 
     GameOptions return_value{ Title };
 
