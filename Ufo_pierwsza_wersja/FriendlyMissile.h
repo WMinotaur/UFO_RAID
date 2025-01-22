@@ -9,7 +9,7 @@
 class FriendlyMissile : public AbstractMissile
 {
 private:
-	std::string path{ ".\\Textures\\bullet3.png" };
+	std::string path{ ".\\Textures\\friendlymissile.png" };
 	bool toDelete{ false };
 	FriendlyMissile(float x, float y);
 public:

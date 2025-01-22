@@ -35,7 +35,7 @@ private:
 	std::vector<AbstractMissile*> friendlyMissile;
 	bool GameInitialized(Background* bkg, Ship* shp);
 	bool paused;
-	GameOptions GameLoop(RenderWindow* window, Background* bgr, Ship *ship );
+	GameOptions GameLoop(RenderWindow* window, Background* bgr, Ship *ship);
 	void DeleteMissiless(RenderWindow* window);
 	void UpdateMissiles(Ship* ship);
 	std::string executable_path{};

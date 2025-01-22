@@ -6,7 +6,7 @@
 class Pointer:public GameElement
 {
 private:
-	std::string path{ ".\\Textures\\pointer.jpg" };
+	std::string path{ ".\\Textures\\pointer.png" };
 	GameElementPosition Selection[NUMBEROFSELECTION];
 	int currentSelection{};
 

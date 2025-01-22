@@ -64,7 +64,6 @@ void displayMessageBox(const std::string& message) {
 
 int main() {
     srand(static_cast<unsigned>(time(NULL)));
-    std::string path{ "C:\\git\\jpo_ufo_gra" };
 
     RenderWindow okno(VideoMode::getDesktopMode(), "gra_ufo", sf::Style::Fullscreen);
     okno.setFramerateLimit(60);

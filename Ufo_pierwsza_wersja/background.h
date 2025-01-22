@@ -8,16 +8,13 @@ using namespace sf;
 class Background :public moving_GameElement
 {
 private:
-	std::string level1_path{ ".\\Textures\\background_test.jpg" };
-	std::string level2_path{ ".\\Textures\\background.jpg" };
-	std::string gameover{ ".\\Textures\\background_lost.jpg" };
-	std::string gameWon{ ".\\Textures\\background_kopia.jpg" };
+	std::string gameover{ ".\\Textures\\background_lost.png" };
+	std::string gameLevelSuccess{};
 	float distance_traveled{ 0 };
 	float background_height{ 0 };
 
 public:
-	Background(std::string path);
-	std::string Level1();
+	Background(std::string path,std::string success_path);
 	void ShowEndGameScreen();
 	Image* getImage();
 	void update();

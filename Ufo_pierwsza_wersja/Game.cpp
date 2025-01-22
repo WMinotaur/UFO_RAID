@@ -1,28 +1,18 @@
 #include "Game.h"
 
 
-class Message_box {
-public:
-    Message_box(std::string message, std::string title) {
-        RectangleShape wi0adomosc;
-        //todo:dorobic pozniej
-        //pauza
-        // mapy i obrazy
-
-    }
-};
 
 Game::Game() {
     paused = false;
     wchar_t path[MAX_PATH];
-    // Pobranie pe³nej œcie¿ki do pliku wykonywalnego
+    
     GetModuleFileNameW(NULL, path, MAX_PATH);
     std::wstring ws(path);
     std::string executablePath(ws.begin(), ws.end());
-    // Konwersja do stringa
+   
     size_t lastSlash = executablePath.find_last_of("\\/");
 
-    // Uzyskanie katalogu
+    
     executable_path = executablePath.substr(0, lastSlash);
 
 };
@@ -30,17 +20,17 @@ Game::Game() {
 bool Game::GameInitialized(Background *bkg, Ship *shp)
 {
     if (bkg->if_initialised() == false)
-    {
-        Message_box box("nie udalo sie zaladowac tla", "blad");
+    {     
         return false;
     }
 
     if (shp->if_initialised() == false) {
-        Message_box box("nie udalo sie zaladowac statku", "blad");
         return false;
     }
     return true;
 }
+
+//-----------------------------------------------------------------------------------------
 GameOptions Game::GameLoop(RenderWindow* window, Background* bgr, Ship *ship)
 {
     GameOptions return_value{ Title };
@@ -137,6 +127,9 @@ GameOptions Game::GameLoop(RenderWindow* window, Background* bgr, Ship *ship)
 
     return return_value;
 }
+
+
+//----------------------------------------------------------------------------------
 void Game::DeleteAllMissiles(RenderWindow* window) {
     for (size_t i{}; i < missiles.size(); i++) {
         AbstractMissile* m = missiles[i];
@@ -195,9 +188,10 @@ void Game::UpdateMissiles(Ship *ship)
 }
 
 GameOptions Game::PlayLevel1(RenderWindow* okno) {
-    std::string path{ ".\\Textures\\background.jpg" };
-    Background background(path);
-    Ship ship;
+    std::string path{ ".\\Textures\\background_level1.jpg" };
+    std::string next_path{ ".\\Textures\\background_next.png" };
+    Background background(path,next_path);
+    Ship ship(Color(8, 175, 219));
     
     if (!GameInitialized(&background, &ship))
     {
@@ -207,18 +201,19 @@ GameOptions Game::PlayLevel1(RenderWindow* okno) {
 
     GameOptions return_value{Title};
 
-
     return_value = GameLoop(okno, &background, &ship);
-    if (return_value == NextLevel)
+    if (return_value == NextLevel) {
         return_value = Level2;
+    }
     return return_value;
 
 }
 
 GameOptions Game::PlayLevel2(RenderWindow* okno) {
     std::string path{ ".\\Textures\\background.jpg" };
-    Background background(path);
-    Ship ship;
+    std::string win_path{ ".\\Textures\\background_won.jpg" };
+    Background background(path,win_path);
+    Ship ship(Color(212, 106, 48));
 
     GameOptions return_value{ Title };
 
@@ -252,7 +247,7 @@ GameOptions Game::TitleScreen(RenderWindow* okno) {
 
     if (background.if_initialised() == false)
     {
-        Message_box box("nie udalo sie zaladowac tla", "blad");
+        
         return InitialisationError;
     }
     GameElementPosition Pos1(constants::Position, constants::Position1);
@@ -260,7 +255,7 @@ GameOptions Game::TitleScreen(RenderWindow* okno) {
     GameElementPosition Pos3(constants::Position, constants::Position3);
     Pointer pointer(&Pos1,&Pos2,&Pos3);
     if (pointer.if_initialised() == false) {
-        Message_box box("nie udalo sie zaladowac wstaznika", "blad");
+        
         return InitialisationError;
     }
     int choice{};

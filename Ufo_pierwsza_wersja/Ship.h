@@ -12,8 +12,9 @@ private:
     bool isDetonated{ false };
     std::string broken_ufo{ ".\\Textures\\broken_ufo3.jpg" };
     bool isFinished{ false };
+    Color roadColor{};
 public:
-    Ship();
+    Ship(Color roadColor);
     void move(float offsetX, float offsetY);
     void detonate();
     void draw(RenderWindow* okno);

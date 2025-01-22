@@ -1,15 +1,13 @@
 #include "Background.h"
 
-Background::Background(std::string path):moving_GameElement(){
+Background::Background(std::string path,std::string success_path):moving_GameElement(){
     Create(path);
-    
+    gameLevelSuccess = success_path;
     background_height = sprite.getGlobalBounds().height;
     sprite.setPosition(0.0f, (constants::window_height -  background_height));
     velocity = { constants::background_velocity_x , constants::background_velocity_y };
+
     
-}
-std::string Background::Level1() {
-    return level1_path;
 }
 
 
@@ -37,7 +35,7 @@ float Background::getBackgroundHeight() {
 }
 
 void Background::ShowWinGameScreen() {
-    Create(gameWon);
+    Create(gameLevelSuccess);
     sprite.setPosition(0.0f, 0.0f);
     velocity = { 0,0 };
 }

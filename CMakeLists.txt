@@ -33,6 +33,7 @@ set(SOURCES
     Ufo_pierwsza_wersja/Pointer.cpp
     Ufo_pierwsza_wersja/Ship.cpp
     Ufo_pierwsza_wersja/StaticBackground.cpp
+    Ufo_pierwsza_wersja/AbstractMissile.cpp
 )
 
 # Tworzenie pliku wykonywalnego
