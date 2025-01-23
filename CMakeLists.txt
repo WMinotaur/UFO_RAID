@@ -10,9 +10,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG ${CMAKE_BINARY_DIR}/bin)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE ${CMAKE_BINARY_DIR}/bin)
-set(CMAKE_VS_DEBUGGER_WORKING_DIRECTORY, ${CMAKE_BINARY_DIR}/bin)
+set(CMAKE_VS_DEBUGGER_WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 #ustawienie katalogu ze źródłami
-set(CMAKE_VS_DEBUGGER_WORKING_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
 
 # Wymuszenie architektury 32-bitowej
 if(CMAKE_SIZEOF_VOID_P EQUAL 8)
@@ -20,7 +19,10 @@ if(CMAKE_SIZEOF_VOID_P EQUAL 8)
 endif()
 
 # Dodanie ścieżki do nagłówków SFML
-include_directories("C:/git/jpo_ufo_gra/External/SFML/include")
+include_directories("External/SFML/include")
+
+# Dodanie ścieżki do bibliotek SFML
+link_directories("External/SFML/lib")
 
 # Pliki źródłowe projektu
 set(SOURCES
@@ -41,18 +43,18 @@ add_executable(Ufo_pierwsza_wersja ${SOURCES})
 
 # Set up libraries for different build types
 set(DEBUG_LIBS
-    "C:/git/jpo_ufo_gra/External/SFML/lib/sfml-graphics-d.lib"
-    "C:/git/jpo_ufo_gra/External/SFML/lib/sfml-window-d.lib"
-    "C:/git/jpo_ufo_gra/External/SFML/lib/sfml-audio-d.lib"
-    "C:/git/jpo_ufo_gra/External/SFML/lib/sfml-network-d.lib"
-    "C:/git/jpo_ufo_gra/External/SFML/lib/sfml-system-d.lib"
+    "sfml-graphics-d.lib"
+    "sfml-window-d.lib"
+    "sfml-audio-d.lib"
+    "sfml-network-d.lib"
+    "sfml-system-d.lib"
 )
 set(RELEASE_LIBS
-    "C:/git/jpo_ufo_gra/External/SFML/lib/sfml-graphics.lib"
-    "C:/git/jpo_ufo_gra/External/SFML/lib/sfml-window.lib"
-    "C:/git/jpo_ufo_gra/External/SFML/lib/sfml-audio.lib"
-    "C:/git/jpo_ufo_gra/External/SFML/lib/sfml-network.lib"
-    "C:/git/jpo_ufo_gra/External/SFML/lib/sfml-system.lib"
+    "sfml-graphics.lib"
+    "sfml-window.lib"
+    "sfml-audio.lib"
+    "sfml-network.lib"
+    "sfml-system.lib"
 )
 
 # Use generator expressions to link the appropriate libraries based on the build type
@@ -61,19 +63,9 @@ target_link_libraries(Ufo_pierwsza_wersja
     $<IF:$<CONFIG:Debug>,${DEBUG_LIBS},${RELEASE_LIBS}>
 )
 
-
-# Dodanie linkowania bibliotek SFML
-#target_link_libraries(Ufo_pierwsza_wersja
-#    "C:/git/jpo_ufo_gra/External/SFML/lib/sfml-graphics.lib"
-#    "C:/git/jpo_ufo_gra/External/SFML/lib/sfml-window.lib"
-#    "C:/git/jpo_ufo_gra/External/SFML/lib/sfml-audio.lib"
-#    "C:/git/jpo_ufo_gra/External/SFML/lib/sfml-network.lib"
-#    "C:/git/jpo_ufo_gra/External/SFML/lib/sfml-system.lib"
-#)
-
 # Dodanie tekstur do katalogu budowy
 
-file(COPY "C:/git/jpo_ufo_gra/Textures" DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
+file(COPY "Textures" DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/Ufo_pierwsza_wersja/sfml-audio-2.dll DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${CMAKE_BUILD_TYPE}/)
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/Ufo_pierwsza_wersja/sfml-audio-d-2.dll DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${CMAKE_BUILD_TYPE}/)
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/Ufo_pierwsza_wersja/sfml-graphics-2.dll DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${CMAKE_BUILD_TYPE}/)
