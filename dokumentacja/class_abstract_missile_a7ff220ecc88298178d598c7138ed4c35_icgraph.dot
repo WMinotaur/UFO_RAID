@@ -1,0 +1,16 @@
+digraph "AbstractMissile::AbstractMissile"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="AbstractMissile::Abstract\lMissile",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Protected constructor to prevent direct instantiation."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="AbstractMissile::detectBeing\lShotDown",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_abstract_missile.html#aeda5c939bf0f23e82d6d6356849dbc7c",tooltip="Pure virtual function to detect if the missile has been shot down."];
+  Node1 -> Node3 [id="edge2_Node000001_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="Missile::detectBeingShotDown",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_missile.html#a053912e11a3a70dcee8a28e0c301529b",tooltip="Detects if the missile has been shot down by friendly missiles."];
+  Node1 -> Node4 [id="edge3_Node000001_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="AbstractMissile::Missile\lFactory",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_abstract_missile.html#a9a4d5fddefb557a1a92982f434968b33",tooltip="Friend function to create a missile using the MissileFactory."];
+  Node4 -> Node4 [id="edge4_Node000004_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+}

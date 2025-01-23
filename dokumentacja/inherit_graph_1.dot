@@ -1,0 +1,25 @@
+digraph "Graphical Class Hierarchy"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node0 [id="Node000000",label="GameElement",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_game_element.html",tooltip="Base class for all game elements."];
+  Node0 -> Node1 [id="edge1_Node000000_Node000001",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node1 [id="Node000001",label="MovingGameElement",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_moving_game_element.html",tooltip="Derived class for moving game elements."];
+  Node1 -> Node2 [id="edge2_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="AbstractMissile",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_abstract_missile.html",tooltip="Abstract base class for all missile types in the game."];
+  Node2 -> Node3 [id="edge3_Node000002_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="FriendlyMissile",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_friendly_missile.html",tooltip="Represents a missile fired by the player's ship."];
+  Node2 -> Node4 [id="edge4_Node000002_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="Missile",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_missile.html",tooltip="Represents a missile in the game."];
+  Node1 -> Node5 [id="edge5_Node000001_Node000005",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="Background",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_background.html",tooltip="Represents the background of the game, including end game and win game screens."];
+  Node0 -> Node6 [id="edge6_Node000000_Node000006",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="Pointer",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_pointer.html",tooltip="Manages the selection pointer in the game."];
+  Node0 -> Node7 [id="edge7_Node000000_Node000007",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node7 [id="Node000007",label="Ship",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_ship.html",tooltip="Represents a ship in the game, derived from GameElement."];
+  Node0 -> Node8 [id="edge8_Node000000_Node000008",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node8 [id="Node000008",label="StaticBackground",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_static_background.html",tooltip="Represents a static background element in the game."];
+}

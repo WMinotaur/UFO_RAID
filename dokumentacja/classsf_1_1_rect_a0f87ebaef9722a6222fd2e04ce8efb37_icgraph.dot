@@ -1,0 +1,13 @@
+digraph "sf::Rect::Rect"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="sf::Rect::Rect",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Default constructor."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="sf::Rect::contains",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classsf_1_1_rect.html#aa254e12d95ecf460ace8b2784fbab5eb",tooltip="Check if a point is inside the rectangle's area."];
+  Node1 -> Node3 [id="edge2_Node000001_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="sf::Rect::getSize",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classsf_1_1_rect.html#a69f360f69915024e70b3256e6825ed3a",tooltip="Get the size of the rectangle."];
+}

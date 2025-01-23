@@ -1,0 +1,25 @@
+digraph "sf::Color::Color"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="sf::Color::Color",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Default constructor."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="sf::Color::operator!=",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classsf_1_1_color.html#a5d6501b7dd05f481b79f7163899f1d92",tooltip="Overload of the != operator."];
+  Node1 -> Node3 [id="edge2_Node000001_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="sf::Color::operator*",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classsf_1_1_color.html#aa9de267d831b4ec8ba65b627e51d50c3",tooltip="Overload of the binary * operator."];
+  Node1 -> Node4 [id="edge3_Node000001_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="sf::Color::operator*=",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classsf_1_1_color.html#a8953be58a47ced92fb25966d6ee90511",tooltip="Overload of the binary *= operator."];
+  Node1 -> Node5 [id="edge4_Node000001_Node000005",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="sf::Color::operator+",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classsf_1_1_color.html#a90e79ecc276114cda519a88119ac645b",tooltip="Overload of the binary + operator."];
+  Node1 -> Node6 [id="edge5_Node000001_Node000006",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="sf::Color::operator+=",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classsf_1_1_color.html#a19917f2453a4acfd69de2539bfab8031",tooltip="Overload of the binary += operator."];
+  Node1 -> Node7 [id="edge6_Node000001_Node000007",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node7 [id="Node000007",label="sf::Color::operator-",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classsf_1_1_color.html#a6d9047ddbcec2bbab8519d93300bb2aa",tooltip="Overload of the binary - operator."];
+  Node1 -> Node8 [id="edge7_Node000001_Node000008",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node8 [id="Node000008",label="sf::Color::operator-=",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classsf_1_1_color.html#a86ceee6b959136932020db4036918ecd",tooltip="Overload of the binary -= operator."];
+  Node1 -> Node9 [id="edge8_Node000001_Node000009",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node9 [id="Node000009",label="sf::Color::operator==",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classsf_1_1_color.html#a7498d4670c7655e8d4d91ef49cc6064e",tooltip="Overload of the == operator."];
+}

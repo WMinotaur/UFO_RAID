@@ -1,0 +1,15 @@
+digraph "GameElement::draw"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="GameElement::draw",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Draws the game element on the given window."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="Game::Credits",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_game.html#a4d28783b967a9c3232844ab2dd62849f",tooltip="Displays the credits screen."];
+  Node1 -> Node3 [id="edge2_Node000001_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="Ship::draw",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_ship.html#a4aff4ec4251ab3e5e54e907bea930122",tooltip="Draws the ship on the given window."];
+  Node1 -> Node4 [id="edge3_Node000001_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="Game::TitleScreen",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_game.html#afbd2a10283d47cdc5057fb3d957a944d",tooltip="Displays the title screen."];
+}

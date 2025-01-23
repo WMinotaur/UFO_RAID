@@ -1,0 +1,15 @@
+digraph "sf::ThreadLocal::getValue"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="sf::ThreadLocal::getValue",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Retrieve the thread-specific value of the variable."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="sf::ThreadLocalPtr\l::operator T*",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classsf_1_1_thread_local_ptr.html#a81ca089ae5cda72c7470ca93041c3cb2",tooltip="Conversion operator to implicitly convert the pointer to its raw pointer type (T*)"];
+  Node1 -> Node3 [id="edge2_Node000001_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="sf::ThreadLocalPtr\l::operator*",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classsf_1_1_thread_local_ptr.html#adcbb45ae077df714bf9c61e936d97770",tooltip="Overload of unary operator *."];
+  Node1 -> Node4 [id="edge3_Node000001_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="sf::ThreadLocalPtr\l::operator-\>",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classsf_1_1_thread_local_ptr.html#a25646e1014a933d1a45b9ce17bab7703",tooltip="Overload of operator ->"];
+}

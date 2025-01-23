@@ -1,0 +1,21 @@
+digraph "Game::Credits"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="Game::Credits",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Displays the credits screen."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="sf::RenderTarget::clear",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classsf_1_1_render_target.html#a6bb6f0ba348f2b1e2f46114aeaf60f26",tooltip="Clear the entire target with a single color."];
+  Node1 -> Node3 [id="edge2_Node000001_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="sf::Window::display",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classsf_1_1_window.html#adabf839cb103ac96cfc82f781638772a",tooltip="Display on screen what has been rendered to the window so far."];
+  Node1 -> Node4 [id="edge3_Node000001_Node000004",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="GameElement::draw",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_game_element.html#acf7f870e29984b676839b81d63c56762",tooltip="Draws the game element on the given window."];
+  Node4 -> Node5 [id="edge4_Node000004_Node000005",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="sf::RenderTarget::draw",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classsf_1_1_render_target.html#a12417a3bcc245c41d957b29583556f39",tooltip="Draw a drawable object to the render target."];
+  Node1 -> Node6 [id="edge5_Node000001_Node000006",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="sf::Keyboard::isKeyPressed",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classsf_1_1_keyboard.html#a80a04b2f53005886957f49eee3531599",tooltip="Check if a key is pressed."];
+  Node1 -> Node7 [id="edge6_Node000001_Node000007",color="steelblue1",style="solid",tooltip=" "];
+  Node7 [id="Node000007",label="sf::WindowBase::isOpen",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classsf_1_1_window_base.html#aa43559822564ef958dc664a90c57cba0",tooltip="Tell whether or not the window is open."];
+}

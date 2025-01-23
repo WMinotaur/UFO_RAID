@@ -235,7 +235,7 @@ GameOptions Game::PlayLevel2(RenderWindow* okno) {
     std::string path{ ".\\Textures\\background_level2.jpg" };
     std::string win_path{ ".\\Textures\\background_won.jpg" };
     Background background(path,win_path);
-    Ship ship(Color(8, 175, 219));
+    Ship ship(Color(24, 18, 116));
 
     GameOptions return_value{ Title };
 

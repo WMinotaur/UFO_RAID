@@ -1,0 +1,13 @@
+digraph "StaticBackground::StaticBackground"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="StaticBackground::Static\lBackground",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Constructs a StaticBackground object with the specified image path."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="GameElement::Create",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_game_element.html#a40e85d6a5d8e911bec5b7358c1496354",tooltip="Creates the game element with the specified image."];
+  Node1 -> Node3 [id="edge2_Node000001_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="GameElement::GameElement",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_game_element.html#aaa745ed353bc4560ae9f4d7f4f544238",tooltip="Constructs a GameElement."];
+}

@@ -1,0 +1,11 @@
+digraph "Background::ShowEndGameScreen"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="Background::ShowEndGameScreen",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Displays the end game screen."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="GameElement::Create",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_game_element.html#a40e85d6a5d8e911bec5b7358c1496354",tooltip="Creates the game element with the specified image."];
+}
