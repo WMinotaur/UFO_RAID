@@ -24,18 +24,22 @@ include_directories("External/SFML/include")
 # Dodanie ścieżki do bibliotek SFML
 link_directories("External/SFML/lib")
 
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
+
+# target_include_directories(Ufo_pierwsza_wersja PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
+
 # Pliki źródłowe projektu
 set(SOURCES
-    Ufo_pierwsza_wersja/main.cpp
-    Ufo_pierwsza_wersja/Game.cpp
-    Ufo_pierwsza_wersja/Background.cpp
-    Ufo_pierwsza_wersja/FriendlyMissile.cpp
-    Ufo_pierwsza_wersja/GameElement.cpp
-    Ufo_pierwsza_wersja/Missile.cpp
-    Ufo_pierwsza_wersja/Pointer.cpp
-    Ufo_pierwsza_wersja/Ship.cpp
-    Ufo_pierwsza_wersja/StaticBackground.cpp
-    Ufo_pierwsza_wersja/AbstractMissile.cpp
+    src/main.cpp
+    src/Game.cpp
+    src/Background.cpp
+    src/FriendlyMissile.cpp
+    src/GameElement.cpp
+    src/Missile.cpp
+    src/Pointer.cpp
+    src/Ship.cpp
+    src/StaticBackground.cpp
+    src/AbstractMissile.cpp
 )
 
 # Tworzenie pliku wykonywalnego
