@@ -29,7 +29,7 @@ namespace constants {
     /**
      * @brief The period for missile generation in milliseconds.
      */
-    constexpr int MISSILE_GENERATION_PERIOD = 2000;
+    constexpr int MISSILE_GENERATION_PERIOD = 1500;
 
     /**
      * @brief The horizontal velocity of the background.

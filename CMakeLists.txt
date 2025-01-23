@@ -6,6 +6,21 @@ project(Ufo_pierwsza_wersja LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
+
+
+# Pobranie Google Test
+include(FetchContent)
+FetchContent_Declare(
+  googletest
+  URL https://github.com/google/googletest/archive/refs/tags/release-1.12.1.zip
+)
+# Pobranie i konfiguracja Google Test
+FetchContent_MakeAvailable(googletest)
+
+# Włączenie testów
+enable_testing()
+
+
 # Ustawienie katalogu dla plików wykonywalnych
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG ${CMAKE_BINARY_DIR}/bin)
@@ -20,6 +35,8 @@ endif()
 
 # Dodanie ścieżki do nagłówków SFML
 include_directories("External/SFML/include")
+
+add_subdirectory(tests)
 
 # Dodanie ścieżki do bibliotek SFML
 link_directories("External/SFML/lib")
@@ -44,6 +61,7 @@ set(SOURCES
 
 # Tworzenie pliku wykonywalnego
 add_executable(Ufo_pierwsza_wersja ${SOURCES})
+#add_library(Ufo_pierwsza_wersja ${SOURCES})
 
 # Set up libraries for different build types
 set(DEBUG_LIBS
@@ -52,6 +70,7 @@ set(DEBUG_LIBS
     "sfml-audio-d.lib"
     "sfml-network-d.lib"
     "sfml-system-d.lib"
+    GTest::gtest_main
 )
 set(RELEASE_LIBS
     "sfml-graphics.lib"
@@ -61,11 +80,19 @@ set(RELEASE_LIBS
     "sfml-system.lib"
 )
 
+
 # Use generator expressions to link the appropriate libraries based on the build type
 target_link_libraries(Ufo_pierwsza_wersja
   PRIVATE
     $<IF:$<CONFIG:Debug>,${DEBUG_LIBS},${RELEASE_LIBS}>
 )
+
+# Pomiń pthread na Windows
+if(WIN32)
+    set(THREADS_PREFER_PTHREAD_FLAG OFF)
+endif()
+
+find_package(Threads REQUIRED)
 
 # Dodanie tekstur do katalogu budowy
 
