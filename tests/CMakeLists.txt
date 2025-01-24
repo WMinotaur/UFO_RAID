@@ -20,13 +20,9 @@ set(TEST_SOURCES
     ../src/AbstractMissile.cpp
 )
 
-# Tworzenie pliku wykonywalnego dla testów
 add_executable(RunTests ${TEST_SOURCES})
 
-# Linkowanie z biblioteką Google Test i kodem projektu
 
-
-# Dodanie testów do CTest
 add_test(NAME RunTests COMMAND RunTests)
 
 set(DEBUG_LIBS
